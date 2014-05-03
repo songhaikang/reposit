@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shk.baseframe.web.mapper.UserMapper">
+
+    <!--构造一个以JavaBean为结构的resultMap，需要指定JavaBean的属性名与对应的table的列名之间的对应关系-->
+    <!--小技巧：若属性名与列名一致，可以省略-->
+    <resultMap id="userResultMap" type="User">
+        <id property="userId" column="user_id"/>
+        <result property="userName" column="user_name"/>
+        <!--<result property="password" column="password"/>-->
+    </resultMap>
+
+    <select id="getUser"  resultMap="userResultMap">
+        SELECT * FROM user WHERE user_id = #{userId}
+    </select>
+
+    <update id="update" parameterType="User">
+        UPDATE user SET user_name = #{userName},password=#{password}
+        WHERE user_id=#{userId}
+    </update>
+
+    <!--若不使用ResultMap，当列名与属性名不匹配时，需要在sql语句中将列名的别名与属性名写成一致-->
+    <!--<select id="getUserList" resultType="User">-->
+        <!--select user_id as userId,-->
+        <!--user_name as userName,-->
+        <!--password from user-->
+    <!--</select>-->
+
+    <select id="getUserList" resultMap="userResultMap">
+        select * from user
+    </select>
+
+    <insert id="add" parameterType="User">
+        insert into user (user_id,user_name,password) values (#{userId},#{userName},#{password})
+    </insert>
+</mapper>
