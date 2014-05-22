@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shk.baseframe.demo.uc.mapper.UserInfoMapper" >
+
+    <!--小技巧：若属性名与列名一致，可以省略-->
+    <resultMap id="userResultMap" type="com.shk.baseframe.demo.uc.domain.UserInfo">
+        <id property="userId" column="user_id"/>
+        <result property="userName" column="username"/>
+        <result property="password" column="password"/>
+    </resultMap>
+
+
+
+
+</mapper>

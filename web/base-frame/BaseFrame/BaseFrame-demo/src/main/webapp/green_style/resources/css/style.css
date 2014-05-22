@@ -1,0 +1,524 @@
+a:link {
+	color: #0030BF;
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #0033FF;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #93ABFF;
+}
+
+a:active {
+	text-decoration: none;
+	color: #0066FF;
+}
+
+BODY {
+	BACKGROUND: #ffffff;
+	SCROLLBAR-FACE-COLOR: #dee3e7;
+	FONT-SIZE: 10pt;
+	SCROLLBAR-HIGHLIGHT-COLOR: #ffffff;
+	SCROLLBAR-SHADOW-COLOR: #dee3e7;
+	SCROLLBAR-3DLIGHT-COLOR: #d1d7dc;
+	SCROLLBAR-ARROW-COLOR: #006699;
+	SCROLLBAR-TRACK-COLOR: #efefef;
+	FONT-FAMILY: Verdana;
+	SCROLLBAR-DARKSHADOW-COLOR: #98aab1
+}
+
+.tablestyle1 {
+	BORDER-RIGHT: 0px;
+	BORDER-TOP: 0px;
+	border: 0px;
+	cellspacing: 1px;
+	FONT-SIZE: 9pt;
+	BORDER-LEFT: 0px;
+	WIDTH: 100%;
+	BORDER-BOTTOM: 0px;
+	BACKGROUND-COLOR: #0077b2
+}
+
+.tablestyle2 {
+	BORDER-RIGHT: 0px;
+	BORDER-TOP: 0px;
+	border: 0px;
+	cellspacing: 1px;
+	FONT-SIZE: 9pt;
+	BORDER-LEFT: 0px;
+	BORDER-BOTTOM: 0px;
+	BACKGROUND-COLOR: #0077b2
+}
+
+.homepageline {
+	BACKGROUND-COLOR: #80C717
+}
+
+.help_title {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 11pt
+}
+
+.help_content {
+	FONT-SIZE: 10pt
+}
+
+.hr1 {
+	WIDTH: 99%;
+	COLOR: #efefef;
+	HEIGHT: 3px;
+	TEXT-ALIGN: left
+}
+
+.bodycolor {
+	BACKGROUND: #ffffff
+}
+
+.bodycolor2 {
+	BACKGROUND: #ffffff
+}
+
+.panel {
+	BACKGROUND: #f3f8fd
+}
+
+.menu_top_mouse1 {
+	BACKGROUND-COLOR: #9bc9ea
+}
+
+.menu_top_mouse2 {
+	BACKGROUND-COLOR: #ffffff
+}
+
+.menu_top_mouse3 {
+	BACKGROUND-COLOR: #eeeeee
+}
+
+.menu_operation_1 {
+	BACKGROUND-COLOR: #b3d1ff
+}
+
+.menu_operation_2 {
+	
+}
+
+.menu_operation_3 {
+	BACKGROUND-COLOR: #d9e8ff
+}
+
+.title1 {
+	BORDER-RIGHT: 0px;
+	BORDER-TOP: 0px;
+	FONT-SIZE: 9pt;
+	BACKGROUND-IMAGE: url(/green_style/resources/images/tablehdbg1.gif);
+	BORDER-LEFT: 0px;
+	WIDTH: 100%;
+	COLOR: #333666;
+	BORDER-BOTTOM: 0px;
+	HEIGHT: 30px
+}
+
+.big {
+	FONT-SIZE: 9pt;
+	COLOR: #333666
+}
+
+.big1 {
+	FONT-SIZE: 9pt;
+	COLOR: #333666
+}
+
+.big2 {
+	FONT-SIZE: 9pt;
+	COLOR: #333666
+}
+
+.big3 {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 9pt;
+	COLOR: #333666
+}
+
+.big4 {
+	FONT-SIZE: 8pt;
+	COLOR: #CCCCCC
+}
+
+.Message {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 10pt;
+	COLOR: #ff3300
+}
+
+.sb_center_text {
+	CURSOR: hand;
+	COLOR: #000000
+}
+
+.sb_online_text {
+	WIDTH: 100%;
+	COLOR: #0066cc;
+	TEXT-DECORATION: none
+}
+
+.sb_online_num {
+	BORDER-RIGHT: 0px;
+	BORDER-TOP: 0px;
+	FONT-WEIGHT: bold;
+	BORDER-LEFT: 0px;
+	WIDTH: 24pt;
+	CURSOR: hand;
+	COLOR: #0066cc;
+	BORDER-BOTTOM: 0px;
+	HEIGHT: 12pt;
+	BACKGROUND-COLOR: transparent;
+	TEXT-ALIGN: center
+}
+
+.small {
+	FONT-SIZE: 9pt
+}
+
+.small1 {
+	FONT-SIZE: 10pt
+}
+
+.verybig {
+	FONT-SIZE: 24pt
+}
+
+INPUT.SmallButton {
+	BORDER-RIGHT: #80C717 1px solid;
+	BORDER-TOP: #80C717 1px solid;
+	FONT-SIZE: 12px;
+	BACKGROUND-IMAGE: url(/green_style/resources/images/button_bg.gif);
+	BORDER-LEFT: #80C717 1px solid;
+	BORDER-BOTTOM: #80C717 1px solid;
+	HEIGHT: 20px;
+	BACKGROUND-COLOR: #ffffff
+}
+
+INPUT.BigButton {
+	BORDER-RIGHT: #666666 1px solid;
+	BORDER-TOP: #666666 1px solid;
+	FONT-SIZE: 12px;
+	BACKGROUND-IMAGE: url(/green_style/resources/images/button_bg.gif);
+	BORDER-LEFT: #666666 1px solid;
+	BORDER-BOTTOM: #666666 1px solid;
+	HEIGHT: 20px;
+	BACKGROUND-COLOR: #ffffff
+}
+
+INPUT.SmallInput {
+	BORDER-RIGHT: black 1px solid;
+	BORDER-TOP: black 1px solid;
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 9pt;
+	BACKGROUND: #f8f8f8;
+	BORDER-LEFT: black 1px solid;
+	COLOR: #000066;
+	LINE-HEIGHT: normal;
+	BORDER-BOTTOM: black 1px solid;
+	FONT-STYLE: normal;
+	HEIGHT: 18px;
+	FONT-VARIANT: normal
+}
+
+INPUT.SmallInput1 {
+	BORDER-RIGHT: 0px;
+	BORDER-TOP: black 1px solid;
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 9pt;
+	BACKGROUND: #f8f8f8;
+	BORDER-LEFT: black 1px solid;
+	COLOR: #000066;
+	LINE-HEIGHT: normal;
+	BORDER-BOTTOM: black 1px solid;
+	FONT-STYLE: normal;
+	HEIGHT: 18px;
+	FONT-VARIANT: normal
+}
+
+INPUT.BigInput {
+	BORDER-RIGHT: black 1px solid;
+	BORDER-TOP: black 1px solid;
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 9pt;
+	BACKGROUND: #f8f8f8;
+	BORDER-LEFT: black 1px solid;
+	COLOR: #000066;
+	LINE-HEIGHT: normal;
+	BORDER-BOTTOM: 1px double;
+	FONT-STYLE: normal;
+	HEIGHT: 18px;
+	FONT-VARIANT: normal
+}
+
+INPUT.BigInputMoney {
+	BORDER-RIGHT: black 1px solid;
+	BORDER-TOP: black 1px solid;
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 9pt;
+	BACKGROUND: #f8f8f8;
+	BORDER-LEFT: black 1px solid;
+	COLOR: #000066;
+	LINE-HEIGHT: normal;
+	BORDER-BOTTOM: 1px double;
+	FONT-STYLE: normal;
+	HEIGHT: 18px;
+	TEXT-ALIGN: right;
+	FONT-VARIANT: normal
+}
+
+INPUT.SmallStatic {
+	BORDER-RIGHT: black 1px solid;
+	BORDER-TOP: black 1px solid;
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 9pt;
+	BACKGROUND: #e0e0e0;
+	BORDER-LEFT: black 1px solid;
+	COLOR: #000066;
+	LINE-HEIGHT: normal;
+	BORDER-BOTTOM: black 1px solid;
+	FONT-STYLE: normal;
+	HEIGHT: 18px;
+	FONT-VARIANT: normal
+}
+
+INPUT.BigStatic {
+	BORDER-RIGHT: black 1px solid;
+	BORDER-TOP: black 1px solid;
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 9pt;
+	BACKGROUND: #e0e0e0;
+	BORDER-LEFT: black 1px solid;
+	COLOR: #000066;
+	LINE-HEIGHT: normal;
+	BORDER-BOTTOM: 1px double;
+	FONT-STYLE: normal;
+	HEIGHT: 18px;
+	FONT-VARIANT: normal
+}
+
+SELECT.BigSelect {
+	BORDER-RIGHT: black 1px solid;
+	BORDER-TOP: black 1px solid;
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 9pt;
+	BACKGROUND: #f8f8f8;
+	BORDER-LEFT: black 1px solid;
+	COLOR: #000066;
+	LINE-HEIGHT: normal;
+	BORDER-BOTTOM: 1px double;
+	FONT-STYLE: normal;
+	HEIGHT: 18px;
+	FONT-VARIANT: normal
+}
+
+SELECT.SmallSelect {
+	BORDER-RIGHT: black 1px solid;
+	BORDER-TOP: black 1px solid;
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 9pt;
+	BACKGROUND: #f8f8f8;
+	BORDER-LEFT: black 1px solid;
+	COLOR: #000066;
+	LINE-HEIGHT: normal;
+	BORDER-BOTTOM: 1px double;
+	FONT-STYLE: normal;
+	HEIGHT: 18px;
+	FONT-VARIANT: normal
+}
+
+SELECT.BigStatic {
+	BORDER-RIGHT: black 1px solid;
+	BORDER-TOP: black 1px solid;
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 9pt;
+	BACKGROUND: #e0e0e0;
+	BORDER-LEFT: black 1px solid;
+	COLOR: #000066;
+	LINE-HEIGHT: normal;
+	BORDER-BOTTOM: 1px double;
+	FONT-STYLE: normal;
+	HEIGHT: 18px;
+	FONT-VARIANT: normal
+}
+
+SELECT.SmallStatic {
+	BORDER-RIGHT: black 1px solid;
+	BORDER-TOP: black 1px solid;
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 9pt;
+	BACKGROUND: #e0e0e0;
+	BORDER-LEFT: black 1px solid;
+	COLOR: #000066;
+	LINE-HEIGHT: normal;
+	BORDER-BOTTOM: black 1px solid;
+	FONT-STYLE: normal;
+	HEIGHT: 18px;
+	FONT-VARIANT: normal
+}
+
+TEXTAREA.BigInput {
+	BORDER-RIGHT: black 1px solid;
+	BORDER-TOP: black 1px solid;
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 9pt;
+	BACKGROUND: #f8f8f8;
+	BORDER-LEFT: black 1px solid;
+	COLOR: #000066;
+	LINE-HEIGHT: normal;
+	BORDER-BOTTOM: 1px double;
+	FONT-STYLE: normal;
+	FONT-VARIANT: normal
+}
+
+TEXTAREA.BigStatic {
+	BORDER-RIGHT: black 1px solid;
+	BORDER-TOP: black 1px solid;
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 9pt;
+	BACKGROUND: #e0e0e0;
+	BORDER-LEFT: black 1px solid;
+	COLOR: #000066;
+	LINE-HEIGHT: normal;
+	BORDER-BOTTOM: 1px double;
+	FONT-STYLE: normal;
+	FONT-VARIANT: normal
+}
+
+.TableControl {
+	BACKGROUND: #eff7ff
+}
+
+.TableHeader {
+	FONT-WEIGHT: bold;
+	HEIGHT: 20px;  
+	BACKGROUND: url(/green_style/resources/images/header_bg.gif);
+	COLOR: #ffffff
+}
+
+.TableHeader1 {
+	BACKGROUND: url(/green_style/resources/images/header_bg.gif);
+	CURSOR: hand;
+	COLOR: #ffffff
+}
+
+.TableHeader2 {
+	FONT-WEIGHT: bold;
+	BACKGROUND: url(/green_style/resources/images/header_bg.gif);
+	CURSOR: hand;
+	COLOR: #000066
+}
+
+.TableContent {
+	BACKGROUND: #e2e8fa
+}
+
+.TableData {
+	FONT-SIZE: 10pt;
+	BACKGROUND: #ffffff
+}
+
+.TableLine1 {
+	BACKGROUND: #f3f3f3
+}
+
+.TableLine2 {
+	BACKGROUND: #ffffff
+}
+
+.deletebg {
+	BORDER-RIGHT: black 0px solid;
+	BORDER-TOP: black 0px solid;
+	FONT-SIZE: 12px;
+	BORDER-LEFT: black 0px solid;
+	BORDER-BOTTOM: #000000 0px solid;
+	FONT-FAMILY: "����";
+	TEXT-ALIGN: center
+}
+
+.querybg {
+	BORDER-RIGHT: black 0px solid;
+	BORDER-TOP: black 0px solid;
+	FONT-SIZE: 12px;
+	BORDER-LEFT: black 0px solid;
+	BORDER-BOTTOM: #000000 1px solid;
+	FONT-FAMILY: "����"
+}
+
+.toolbutton {
+	BORDER-RIGHT: #104a7b 1px solid;
+	BORDER-TOP: #afc4d5 1px solid;
+	FONT-SIZE: 10pt;
+	BACKGROUND: url(/green_style/resources/images/button_back.gif) #d6e7ef;
+	MARGIN: 0pt;
+	BORDER-LEFT: #afc4d5 1px solid;
+	WIDTH: 60pt;
+	CURSOR: hand;
+	COLOR: #000066;
+	BORDER-BOTTOM: #104a7b 1px solid;
+	HEIGHT: 18px;
+	TEXT-DECORATION: none
+}
+
+.jinji {
+	color: #FF0000;
+	font-size: 12px;
+}
+
+.white {
+	FONT-WEIGHT: bold;
+	COLOR: #ffffff;
+	font-size: 14px;
+}
+
+TABLE.InputFrameMain {
+	BORDER-RIGHT: #0077b2 1px solid;
+	BORDER-TOP: #0077b2 1px solid;
+	MARGIN-TOP: 15px;
+	font-size: 12px;
+	MARGIN-BOTTOM: 5px;
+	BORDER-LEFT: #0077b2 1px solid;
+	BORDER-BOTTOM: #0077b2 1px solid;
+	BORDER-COLLAPSE: collapse
+}
+
+.tableBorder5 {
+	FONT-SIZE: 9pt;
+	background-color: #ffffff;
+	border: #cccccc 1px solid;
+}
+
+.tableBorder4 {
+	BORDER-RIGHT: #ffffff 1px solid;
+	BORDER-TOP: #ffffff 1px solid;
+	MARGIN-TOP: 15px;
+	font-size: 12px;
+	MARGIN-BOTTOM: 5px;
+	BORDER-LEFT: #ffffff 1px solid;
+	BORDER-BOTTOM: #0077b2 1px solid;
+	BORDER-COLLAPSE: collapse
+}
+
+.xing {
+	color: #009900
+}
+
+.wei {
+	color: #43028A
+}
+
+.inputwu {
+	border-style: solid;
+	border-width: 0;
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 1px;
+	padding-bottom: 1px
+}
