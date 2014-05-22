@@ -1,4 +1,4 @@
-package com.shk.baseframe.api.uc.domain;
+package com.shk.baseframe.api.utils;
 
 
 import org.apache.commons.lang3.builder.ToStringBuilder;

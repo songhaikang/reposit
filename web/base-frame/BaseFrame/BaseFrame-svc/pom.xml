@@ -17,6 +17,14 @@
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.shk.baseframe</groupId>
+            <artifactId>BaseFrame-api</artifactId>
+        </dependency>
+
+
+
     </dependencies>
     <build>
         <finalName>BaseFrame-svc</finalName>
