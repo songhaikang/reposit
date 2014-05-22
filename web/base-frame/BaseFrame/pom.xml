@@ -7,16 +7,21 @@
     <artifactId>BaseFrame</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
     <modules>
         <module>BaseFrame-web</module>
         <module>BaseFrame-svc</module>
         <module>BaseFrame-api</module>
+        <module>BaseFrame-demo</module>
     </modules>
+
     <name>BaseFrame Maven Webapp</name>
     <url>http://maven.apache.org</url>
 
+    <!--配置依赖-->
     <dependencies>
 
+        <!--以下依赖没有版本号属性的原因是因为引用dependencyManagement中定义的依赖，定义的时候有版本号-->
 
         <dependency>
             <groupId>org.springframework</groupId>
@@ -34,25 +39,6 @@
             <groupId>org.apache.geronimo.specs</groupId>
             <artifactId>geronimo-servlet_2.5_spec</artifactId>
         </dependency>
-
-
-        <!--<dependency>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-core</artifactId>-->
-            <!--<version>3.1.2.RELEASE</version>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-context</artifactId>-->
-            <!--<version>3.1.2.RELEASE</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-tx</artifactId>-->
-            <!--<version>3.1.2.RELEASE</version>-->
-        <!--</dependency>-->
-
 
 
         <dependency>
@@ -148,12 +134,26 @@
         </dependency>
 
 
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
+
+
     </dependencies>
+
 
     <!--定义资源-->
     <properties>
         <!--定义版本号开始-->
         <com.shk.baseframe.version>1.0.0-SNAPSHOT</com.shk.baseframe.version>
+        <com.shk.baseframe.api.version>1.0.0-SNAPSHOT</com.shk.baseframe.api.version>
 
 
         <!--定义版本号结束-->
@@ -161,9 +161,21 @@
 
     </properties>
 
+
     <!--定义依赖（仅仅是定义有该依赖，并没有真正的依赖，定义之后子项目中依赖的时候不需要写版本号）-->
     <dependencyManagement>
         <dependencies>
+
+
+            <!--当前项目的引用依赖开始-->
+            <dependency>
+                <groupId>com.shk.baseframe</groupId>
+                <artifactId>BaseFrame-api</artifactId>
+                <version>${com.shk.baseframe.api.version}</version>
+            </dependency>
+            <!--当前项目的引用依赖结束-->
+
+
             <!--spring相关的依赖开始-->
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -317,6 +329,20 @@
                 <version>1.9.13</version>
             </dependency>
             <!--Json相关的依赖结束-->
+
+
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>mail</artifactId>
+                <version>1.4.1</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>2.4.2</version>
+            </dependency>
 
 
         </dependencies>
