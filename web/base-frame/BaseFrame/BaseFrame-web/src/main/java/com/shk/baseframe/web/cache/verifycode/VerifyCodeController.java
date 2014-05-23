@@ -26,7 +26,7 @@ import java.util.Random;
  * To change this template use File | Settings | File Templates.
  */
 @Controller
-@RequestMapping("/cache")
+@RequestMapping("/anonymous/cache")
 public class VerifyCodeController {
     private int width = 90;//定义图片的width
     private int height = 20;//定义图片的height
@@ -59,7 +59,7 @@ public class VerifyCodeController {
             codeContents.add(code);
         }
         String newCodeKey = StringUtils.getUUID();
-        String imgUrl = "http://" + req.getServerName() + ":" + req.getServerPort() +  req.getContextPath() + "/cache/getVerifyCodeImg.do?codeKey=" + newCodeKey;
+        String imgUrl = "http://" + req.getServerName() + ":" + req.getServerPort() +  req.getContextPath() + "/anonymous/cache/getVerifyCodeImg.do?codeKey=" + newCodeKey;
         imgCodeInfo.setCodeKey(newCodeKey);
         imgCodeInfo.setImgUrl(imgUrl);
         verifyCodeCache.addVerifyCode(newCodeKey, codeContents, imgUrl);
@@ -96,9 +96,9 @@ public class VerifyCodeController {
         gd.setFont(font);
 
         // 画边框。
-        gd.setColor(Color.BLACK);
+        gd.setColor(Color.gray);
         gd.drawRect(0, 0, width - 1, height - 1);//绘制矩形
-        gd.setColor(Color.BLACK);
+        gd.setColor(Color.gray);
 
         // 随机产生指定条数的干扰线，使图象中的认证码不易被其它程序探测到。
         for (int i = 0; i < interferingLineNum; i++) {

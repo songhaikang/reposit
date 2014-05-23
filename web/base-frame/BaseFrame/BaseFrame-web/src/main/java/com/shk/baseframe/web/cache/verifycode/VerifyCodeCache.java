@@ -47,16 +47,18 @@ public class VerifyCodeCache {
      */
     public boolean checkVerifyCode(String codeKey, String codeContent) {
         boolean result = false;
-        VerifyCodeInfo imgCodeInfo = verifyCodes.get(codeKey);
-        if (imgCodeInfo != null) {
-            String content = "";
-            for (String code : imgCodeInfo.getCodeContents()) {
-                content = content + code;
-            }
+        if (codeKey != null && codeContent != null) {
+            VerifyCodeInfo imgCodeInfo = verifyCodes.get(codeKey);
+            if (imgCodeInfo != null) {
+                String content = "";
+                for (String code : imgCodeInfo.getCodeContents()) {
+                    content = content + code;
+                }
 
-            if (content.equalsIgnoreCase(codeContent)) {
-                verifyCodes.remove(codeKey);
-                result = true;
+                if (content.equalsIgnoreCase(codeContent)) {
+                    verifyCodes.remove(codeKey);
+                    result = true;
+                }
             }
         }
         return result;

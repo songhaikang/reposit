@@ -57,9 +57,7 @@
             <param-name>contextConfigLocation</param-name>
             <param-value>
                 classpath:spring-config.xml
-                classpath:db-config/spring-mybatis.xml
-                classpath:jedis-config/spring-jedis.xml
-                classpath:/servlet-config/*.xml
+                classpath:spring/*/*.xml
             </param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>

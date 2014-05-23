@@ -15,6 +15,12 @@ public class JsonResultContants {
     public final static String VERIFY_CODE_FAIL_MSG = "验证码不正确！";
 
 
+    public final static String ACCREDIt_CODE_SUCESS = "ACCREDIt_CODE_SUCESS";
+    public final static String ACCREDIt_CODE_SUCESS_MSG = "授权码正确！";
+    public final static String ACCREDIt_CODE_FAIL = "ACCREDIt_CODE_FAIL";
+    public final static String ACCREDIt_CODE_FAIL_MSG = "授权码不正确！";
+
+
     public final static String LOGIN_USERNAME_PASSWORD_ERROR = "LOGIN_USERNAME_PASSWORD_ERROR";
     public final static String LOGIN_USERNAME_PASSWORD_ERROR_MSG = "用户名或密码错误！";
     public final static String LOGIN_SUCCESS = "LOGIN_SUCCESS";

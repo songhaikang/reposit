@@ -2,6 +2,7 @@ package com.shk.baseframe.web.uc.controller;
 
 
 import com.shk.baseframe.api.uc.domain.UcUserInfo;
+import com.shk.baseframe.web.cache.verifycode.AccreditCodeCache;
 import com.shk.baseframe.web.cache.verifycode.VerifyCodeCache;
 import com.shk.baseframe.web.uc.domain.UserInfo;
 import com.shk.baseframe.web.uc.service.UserService;
@@ -34,6 +35,9 @@ public class UserController extends SimpleFormController {
     @Autowired
     VerifyCodeCache verifyCodeCache;
 
+    @Autowired
+    AccreditCodeCache accreditCodeCache;
+
 
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception {
@@ -45,8 +49,8 @@ public class UserController extends SimpleFormController {
 
 
     @ResponseBody
-    @RequestMapping(value = "/uc/loginUserWithVerifyCode")
-    public JsonResult loginUser(String username, String password, String codeKey, String codeContent) {
+    @RequestMapping(value = "/anonymous/uc/loginUserWithVerifyCode")
+    public JsonResult loginUserWithVerifyCode(String username, String password, String codeKey, String codeContent) {
         JsonResult result = null;
         if (verifyCodeCache.checkVerifyCode(codeKey, codeContent)) {//验证码正确
             result = userService.loginUser(username, password);
@@ -58,13 +62,19 @@ public class UserController extends SimpleFormController {
 
 
     @ResponseBody
-    @RequestMapping(value = "/uc/loginUser")
-    public JsonResult loginUser(String username, String password) {
-        return userService.loginUser(username, password);
+    @RequestMapping(value = "/anonymous/uc/loginUserWithAccreditCode")
+    public JsonResult loginUserWithAccreditCode(String username, String password, String accreditCode) {
+        JsonResult result = null;
+        if (accreditCodeCache.checkAccreditCode(accreditCode)) {
+            result = userService.loginUser(username, password);
+        } else {
+            result = new JsonResult(JsonResultContants.ACCREDIt_CODE_FAIL, JsonResultContants.ACCREDIt_CODE_FAIL_MSG);
+        }
+        return result;
     }
 
     @ResponseBody
-    @RequestMapping(value = "/uc/regUser")
+    @RequestMapping(value = "/anonymous/uc/regUser")
     public JsonResult regUser(UserInfo userInfo) {
         JsonResult result = null;
         UcUserInfo userCheck = userService.regCheck(userInfo);

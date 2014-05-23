@@ -13,10 +13,7 @@
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
-                <value>classpath:db-config/c3p0.properties</value>
-                <value>classpath:db-config/jdbc.properties</value>
-                <value>classpath:jedis-config/jedis.properties</value>
-                <value>classpath:upload-config.properties</value>
+                <value>classpath:spring/*/*.properties</value>
             </list>
         </property>
     </bean>
@@ -55,14 +52,6 @@
     <bean class="com.shk.baseframe.web.utils.Uploader">
         <property name="savePath" value="${upload.dir}"/>
     </bean>
-
-    <!--&lt;!&ndash; 配置多请求数据类型，&ndash;&gt;-->
-    <!--<bean id="annotationMethodHandlerAdapter" class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" >-->
-        <!--&lt;!&ndash; 日期格式转换 &ndash;&gt;-->
-        <!--<property name="webBindingInitializer">-->
-            <!--<bean class="com.shk.baseframe.web11.utils.DateConverter"/>-->
-        <!--</property>-->
-    <!--</bean>-->
 
 
 </beans>

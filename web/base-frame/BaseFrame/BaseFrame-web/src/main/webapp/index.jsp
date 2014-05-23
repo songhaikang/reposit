@@ -1,5 +1,6 @@
-<html>
-<body>
-<h2>Hello World!</h2>
-</body>
-</html>
+<%
+    request.getRequestDispatcher("/view/uc/login.jsp").forward(request, response);
+%>
+
+
+
