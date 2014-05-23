@@ -1,4 +1,4 @@
-package com.shk.baseframe.web.uc.service;
+package com.shk.baseframe.svc.uc.service;
 
 import com.shk.baseframe.common.cache.token.TokenCache;
 import com.shk.baseframe.common.character.StringUtils;
@@ -6,9 +6,9 @@ import com.shk.baseframe.common.dbmapper.uc.domain.UcUserInfo;
 import com.shk.baseframe.common.dbmapper.uc.domain.UcUserInfoExample;
 import com.shk.baseframe.common.dbmapper.uc.mapper.UcUserInfoMapper;
 import com.shk.baseframe.common.utils.JsonResult;
-import com.shk.baseframe.web.uc.domain.UserInfo;
-import com.shk.baseframe.web.uc.mapper.UserInfoMapper;
-import com.shk.baseframe.web.utils.JsonResultContants;
+import com.shk.baseframe.svc.uc.domain.UserInfo;
+import com.shk.baseframe.svc.uc.mapper.UserInfoMapper;
+import com.shk.baseframe.svc.utils.JsonResultContants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -13,10 +13,7 @@
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
-                <value>classpath:db-config/c3p0.properties</value>
-                <value>classpath:db-config/jdbc.properties</value>
-                <value>classpath:jedis-config/jedis.properties</value>
-                <value>classpath:upload-config.properties</value>
+                <value>classpath:spring/*/*.properties</value>
             </list>
         </property>
     </bean>
@@ -28,7 +25,7 @@
     <!--函数级别的事务配置开始-->
     <!-- 配置事务切面,指定事务管理器 -->
     <aop:config>
-        <aop:pointcut id="service" expression="execution(* com.shk.baseframe.web.uc.service.*ServiceImpl.*(..))"/>
+        <aop:pointcut id="service" expression="execution(* com.shk.baseframe.svc.uc.service.*ServiceImpl.*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="service" order="1"/>
     </aop:config>
     <!--配置事务切面的拦截规则-->
@@ -52,17 +49,9 @@
 
 
 
-    <bean class="com.shk.baseframe.web.utils.Uploader">
+    <bean class="com.shk.baseframe.common.utils.Uploader">
         <property name="savePath" value="${upload.dir}"/>
     </bean>
-
-    <!--&lt;!&ndash; 配置多请求数据类型，&ndash;&gt;-->
-    <!--<bean id="annotationMethodHandlerAdapter" class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" >-->
-        <!--&lt;!&ndash; 日期格式转换 &ndash;&gt;-->
-        <!--<property name="webBindingInitializer">-->
-            <!--<bean class="com.shk.baseframe.web11.utils.DateConverter"/>-->
-        <!--</property>-->
-    <!--</bean>-->
 
 
 </beans>

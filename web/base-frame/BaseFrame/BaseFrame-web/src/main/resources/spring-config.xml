@@ -49,7 +49,7 @@
 
 
 
-    <bean class="com.shk.baseframe.web.utils.Uploader">
+    <bean class="com.shk.baseframe.common.utils.Uploader">
         <property name="savePath" value="${upload.dir}"/>
     </bean>
 

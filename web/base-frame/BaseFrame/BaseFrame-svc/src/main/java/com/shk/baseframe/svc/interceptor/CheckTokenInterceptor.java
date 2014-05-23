@@ -1,10 +1,10 @@
-package com.shk.baseframe.web.interceptor;
+package com.shk.baseframe.svc.interceptor;
 
 
 import com.alibaba.fastjson.JSON;
 import com.shk.baseframe.common.cache.token.TokenCache;
 import com.shk.baseframe.common.utils.JsonResult;
-import com.shk.baseframe.web.utils.JsonResultContants;
+import com.shk.baseframe.svc.utils.JsonResultContants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;

@@ -1,11 +1,11 @@
-package com.shk.baseframe.web.uc.controller;
+package com.shk.baseframe.svc.uc.controller;
 
 import com.shk.baseframe.common.cache.verifycode.AccreditCodeCache;
 import com.shk.baseframe.common.cache.verifycode.VerifyCodeCache;
 import com.shk.baseframe.common.utils.JsonResult;
-import com.shk.baseframe.web.uc.domain.UserInfo;
-import com.shk.baseframe.web.uc.service.UserService;
-import com.shk.baseframe.web.utils.JsonResultContants;
+import com.shk.baseframe.svc.uc.domain.UserInfo;
+import com.shk.baseframe.svc.uc.service.UserService;
+import com.shk.baseframe.svc.utils.JsonResultContants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
