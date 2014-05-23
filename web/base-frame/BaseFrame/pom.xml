@@ -11,7 +11,7 @@
     <modules>
         <module>BaseFrame-web</module>
         <module>BaseFrame-svc</module>
-        <module>BaseFrame-api</module>
+        <module>BaseFrame-common</module>
         <module>BaseFrame-demo</module>
     </modules>
 
@@ -153,7 +153,7 @@
     <properties>
         <!--定义版本号开始-->
         <com.shk.baseframe.version>1.0.0-SNAPSHOT</com.shk.baseframe.version>
-        <com.shk.baseframe.api.version>1.0.0-SNAPSHOT</com.shk.baseframe.api.version>
+        <com.shk.baseframe.common.version>1.0.0-SNAPSHOT</com.shk.baseframe.common.version>
 
 
         <!--定义版本号结束-->
@@ -170,8 +170,8 @@
             <!--当前项目的引用依赖开始-->
             <dependency>
                 <groupId>com.shk.baseframe</groupId>
-                <artifactId>BaseFrame-api</artifactId>
-                <version>${com.shk.baseframe.api.version}</version>
+                <artifactId>BaseFrame-common</artifactId>
+                <version>${com.shk.baseframe.common.version}</version>
             </dependency>
             <!--当前项目的引用依赖结束-->
 

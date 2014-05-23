@@ -1,4 +1,4 @@
-package com.shk.baseframe.api.utils;
+package com.shk.baseframe.common.dbmapper.utils;
 
 
 import org.apache.commons.lang3.builder.ToStringBuilder;

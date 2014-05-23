@@ -1,7 +1,7 @@
 package com.shk.baseframe.web.uc.controller;
 
 
-import com.shk.baseframe.api.uc.domain.UcUserInfo;
+import com.shk.baseframe.common.dbmapper.uc.domain.UcUserInfo;
 import com.shk.baseframe.web.cache.verifycode.VerifyCodeCache;
 import com.shk.baseframe.web.uc.domain.UserInfo;
 import com.shk.baseframe.web.uc.service.UserService;

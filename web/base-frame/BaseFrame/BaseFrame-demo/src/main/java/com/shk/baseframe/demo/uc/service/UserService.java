@@ -1,8 +1,8 @@
 package com.shk.baseframe.demo.uc.service;
 
-import com.shk.baseframe.api.uc.domain.UcUserInfo;
-import com.shk.baseframe.api.uc.domain.UcUserInfoExample;
-import com.shk.baseframe.api.uc.mapper.UcUserInfoMapper;
+import com.shk.baseframe.common.dbmapper.uc.domain.UcUserInfo;
+import com.shk.baseframe.common.dbmapper.uc.domain.UcUserInfoExample;
+import com.shk.baseframe.common.dbmapper.uc.mapper.UcUserInfoMapper;
 import com.shk.baseframe.common.character.StringUtils;
 import com.shk.baseframe.demo.uc.domain.UserConstants;
 import com.shk.baseframe.demo.uc.domain.UserInfo;

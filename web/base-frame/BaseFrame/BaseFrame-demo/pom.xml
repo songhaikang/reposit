@@ -16,7 +16,7 @@
 
         <dependency>
             <groupId>com.shk.baseframe</groupId>
-            <artifactId>BaseFrame-api</artifactId>
+            <artifactId>BaseFrame-common</artifactId>
         </dependency>
 
 

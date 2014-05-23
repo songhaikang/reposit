@@ -1,7 +1,7 @@
-package com.shk.baseframe.api.uc.mapper;
+package com.shk.baseframe.common.dbmapper.uc.mapper;
 
-import com.shk.baseframe.api.uc.domain.UcUserInfo;
-import com.shk.baseframe.api.uc.domain.UcUserInfoExample;
+import com.shk.baseframe.common.dbmapper.uc.domain.UcUserInfo;
+import com.shk.baseframe.common.dbmapper.uc.domain.UcUserInfoExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

@@ -8,13 +8,13 @@
 
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>BaseFrame-api</artifactId>
+    <artifactId>BaseFrame-common</artifactId>
     <packaging>jar</packaging>
     <!--该工程被其它工程引用的时候，版本不能写固定值，需要使用定义的变量-->
-    <version>${com.shk.baseframe.api.version}</version>
+    <version>${com.shk.baseframe.common.version}</version>
 
 
-    <name>BaseFrame-api Maven Webapp</name>
+    <name>BaseFrame-common Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <dependencies>
 
@@ -22,6 +22,6 @@
 
 
     <build>
-        <finalName>BaseFrame-api</finalName>
+        <finalName>BaseFrame-common</finalName>
     </build>
 </project>

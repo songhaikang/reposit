@@ -1,6 +1,6 @@
 package com.shk.baseframe.web.uc.domain;
 
-import com.shk.baseframe.api.uc.domain.UcUserInfo;
+import com.shk.baseframe.common.dbmapper.uc.domain.UcUserInfo;
 
 /**
  * @author: Ivan Vigoss

@@ -1,4 +1,4 @@
-package com.shk.baseframe.api.uc.domain;
+package com.shk.baseframe.common.dbmapper.uc.domain;
 
 import java.util.ArrayList;
 import java.util.Date;
