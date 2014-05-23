@@ -1,6 +1,7 @@
 package com.shk.baseframe.web.uc.service;
 
 import com.shk.baseframe.common.cache.token.TokenCache;
+import com.shk.baseframe.common.character.DesEncrypt;
 import com.shk.baseframe.common.character.StringUtils;
 import com.shk.baseframe.common.dbmapper.uc.domain.UcUserInfo;
 import com.shk.baseframe.common.dbmapper.uc.domain.UcUserInfoExample;
@@ -8,7 +9,10 @@ import com.shk.baseframe.common.dbmapper.uc.mapper.UcUserInfoMapper;
 import com.shk.baseframe.common.utils.JsonResult;
 import com.shk.baseframe.web.uc.domain.UserInfo;
 import com.shk.baseframe.web.uc.mapper.UserInfoMapper;
+import com.shk.baseframe.web.utils.AppContents;
 import com.shk.baseframe.web.utils.JsonResultContants;
+import com.shk.baseframe.web.utils.MailSendUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +33,10 @@ public class UserService {
     @Autowired
     TokenCache tokenCache;
 
+    @Autowired
+    MailSendUtils mailSendUtils;
+
+    Logger logger = Logger.getLogger(UserService.class.getName());
 
     public JsonResult loginUser(String username, String password) {
         JsonResult result = null;
@@ -46,11 +54,11 @@ public class UserService {
         }
         return result;
     }
-    
+
     public UcUserInfo login(String username, String password) {
         UcUserInfo ucUserInfo = null;
         UcUserInfoExample example = new UcUserInfoExample();
-        example.createCriteria().andUsernameEqualTo(username).andPasswordEqualTo(password);
+        example.createCriteria().andUsernameEqualTo(username).andPasswordEqualTo(DesEncrypt.encrypt(password, AppContents.PASSWORD_DES));
         List<UcUserInfo> ucUserInfos = ucUserInfoMapper.selectByExample(example);
         if (ucUserInfos != null && ucUserInfos.size() > 0) {
             ucUserInfo = ucUserInfos.get(0);
@@ -59,8 +67,7 @@ public class UserService {
     }
 
 
-
-    public JsonResult regUser(UserInfo userInfo){
+    public JsonResult regUser(UserInfo userInfo) {
         JsonResult result = null;
         UcUserInfo userCheck = regCheck(userInfo);
         if (userCheck != null) {
@@ -78,7 +85,7 @@ public class UserService {
     }
 
 
-    public UcUserInfo regCheck(UserInfo userInfo){
+    public UcUserInfo regCheck(UserInfo userInfo) {
         UcUserInfo ucUserInfo = null;
         UcUserInfoExample example = new UcUserInfoExample();
         example.or(example.createCriteria().andEmailEqualTo(userInfo.getEmail()));
@@ -91,15 +98,18 @@ public class UserService {
     }
 
 
-
-    public JsonResult findPasswordUser(String email){
+    public JsonResult findPasswordUser(String email) {
         JsonResult result = null;
         UcUserInfo userCheck = findPasswordCheck(email);
         if (userCheck != null) {
-
-            result = new JsonResult(JsonResultContants.FIND_PASSWORD_FAIL, JsonResultContants.FIND_PASSWORD_FAIL_MSG);
-            result = new JsonResult(JsonResultContants.FIND_PASSWORD_SUCCESS, JsonResultContants.FIND_PASSWORD_SUCCESS_MSG);
-
+            String password = DesEncrypt.decrypt(userCheck.getPassword(), AppContents.PASSWORD_DES);
+            try {
+                mailSendUtils.sendFindPasswordMail(email, password);
+                result = new JsonResult(JsonResultContants.FIND_PASSWORD_SUCCESS, JsonResultContants.FIND_PASSWORD_SUCCESS_MSG);
+            } catch (Exception e) {
+                logger.error(e);
+                result = new JsonResult(JsonResultContants.FIND_PASSWORD_FAIL, JsonResultContants.FIND_PASSWORD_FAIL_MSG);
+            }
         } else {
             result = new JsonResult(JsonResultContants.FIND_PASSWORD_EMAIL_NOT_EXSIT, JsonResultContants.FIND_PASSWORD_EMAIL_NOT_EXSIT_MSG);
         }
@@ -108,7 +118,7 @@ public class UserService {
     }
 
 
-    public UcUserInfo findPasswordCheck(String email){
+    public UcUserInfo findPasswordCheck(String email) {
         UcUserInfo ucUserInfo = null;
         UcUserInfoExample example = new UcUserInfoExample();
         example.createCriteria().andEmailEqualTo(email);
@@ -119,30 +129,31 @@ public class UserService {
         return ucUserInfo;
     }
 
-    
+
     public UcUserInfo getUserInfo(String userId) {
         return ucUserInfoMapper.selectByPrimaryKey(userId);
     }
 
-    
+
     public List<UcUserInfo> getUserInfoList(UcUserInfo ucUserInfo) {
         UcUserInfoExample example = new UcUserInfoExample();
         List<UcUserInfo> ucUserInfoList = ucUserInfoMapper.selectByExample(example);
         return ucUserInfoList;
     }
 
-    
+
     public void update(UcUserInfo userInfo) {
         ucUserInfoMapper.updateByPrimaryKey(userInfo);
     }
 
-    
+
     public void delete(String userId) {
         ucUserInfoMapper.deleteByPrimaryKey(userId);
     }
 
-    
+
     public void add(UcUserInfo userInfo) {
+        userInfo.setPassword(DesEncrypt.encrypt(userInfo.getPassword(), AppContents.PASSWORD_DES));
         userInfo.setState(JsonResultContants.USER_STATE_NORMAL);
         userInfo.setUserId(StringUtils.getUUID());
         ucUserInfoMapper.insert(userInfo);
