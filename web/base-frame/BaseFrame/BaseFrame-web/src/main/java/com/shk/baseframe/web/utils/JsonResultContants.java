@@ -37,5 +37,11 @@ public class JsonResultContants {
     public final static String REG_SUCCESS = "REG_SUCCESS";
     public final static String REG_SUCCESS_MSG = "注册成功！";
 
+    public final static String FIND_PASSWORD_EMAIL_NOT_EXSIT = "FIND_PASSWORD_EMAIL_NOT_EXSIT";
+    public final static String FIND_PASSWORD_EMAIL_NOT_EXSIT_MSG = "邮箱不存在！";
+    public final static String FIND_PASSWORD_SUCCESS = "FIND_PASSWORD_SUCCESS";
+    public final static String FIND_PASSWORD_SUCCESS_MSG = "找回密码成功！邮件已经发送到你填写的邮箱，请查收邮件！";
+    public final static String FIND_PASSWORD_FAIL = "FIND_PASSWORD_FAIL";
+    public final static String FIND_PASSWORD_FAIL_MSG = "找回密码失败！邮件发送失败，请检查邮箱填写是否正确！";
 
 }

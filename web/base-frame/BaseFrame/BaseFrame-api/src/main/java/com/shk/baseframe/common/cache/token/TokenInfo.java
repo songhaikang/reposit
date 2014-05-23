@@ -1,4 +1,4 @@
-package com.shk.baseframe.web.cache.token;
+package com.shk.baseframe.common.cache.token;
 
 /**
  * Created with IntelliJ IDEA.

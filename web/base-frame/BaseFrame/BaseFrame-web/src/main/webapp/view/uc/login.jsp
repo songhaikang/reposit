@@ -101,8 +101,9 @@
 
                     <label class="block clearfix">
                         <span>
-                            <input id="codeContentLogin" name="codeContentLogin" type="text" placeholder="验证码">
-                            <img id="codeImgLogin" name="codeImgLogin" alt="点击换一张验证码" title="点击换一张验证码" src="" width="100" height="29">
+                            <input id="codeContentLogin" name="codeContentLogin" type="text" maxlength="4" placeholder="验证码">
+                            <img id="codeImgLogin" name="codeImgLogin" alt="点击换一张验证码" title="点击换一张验证码" src=""
+                                 width="100" height="29">
                             <input id="codeKeyLogin" name="codeKeyLogin" type="hidden"/>
                         </span>
                     </label>
@@ -150,14 +151,14 @@
 
         <div class="toolbar clearfix">
             <div>
-                <a href="#" onclick="show_box('forgot-box'); return false;" class="forgot-password-link">
+                <a id="loginToFindPassword" href="#" onclick="show_box('forgot-box'); return false;" class="forgot-password-link">
                     <i class="icon-arrow-left"></i>
                     忘记密码
                 </a>
             </div>
 
             <div>
-                <a id="loginToReg" name="loginToReg" href="#" onclick="show_box('signup-box'); return false;"
+                <a id="loginToReg" href="#" onclick="show_box('signup-box'); return false;"
                    class="user-signup-link">
                     注册帐号
                     <i class="icon-arrow-right"></i>
@@ -177,23 +178,36 @@
                 找回密码
             </h4>
 
-            <div class="space-6"></div>
-            <p>
-                请输入你的帐号所关联的邮箱
-            </p>
+            <div class="space-3"></div>
+            <div id="findPasswordTitleInit" name="findPasswordTitleInit" style="display:block">
+                <span>请输入你的帐号所关联的邮箱</span>
+            </div>
+            <div id="findPasswordTitleWarn" name="findPasswordTitleWarn" style="display:none">
+                    <span id="findPasswordTitleWarnMsg" name="findPasswordTitleWarnMsg"
+                          class="header red lighter bigger">邮箱不能为空！</span>
+            </div>
 
             <form>
                 <fieldset>
                     <label class="block clearfix">
                         <span class="block input-icon input-icon-right">
-                            <input type="email" class="form-control"
+                            <input id="emailFindPassword" name="emailFindPassword" type="email" class="form-control"
                                    placeholder="邮箱地址"/>
                             <i class="icon-envelope"></i>
                         </span>
                     </label>
 
+                    <label class="block clearfix">
+                        <span>
+                            <input id="codeContentFindPassword" name="codeContentFindPassword" type="text" maxlength="4" placeholder="验证码">
+                            <img id="codeImgFindPassword" name="codeImgFindPassword" alt="点击换一张验证码" title="点击换一张验证码" src="" width="100" height="29">
+                            <input id="codeKeyFindPassword" name="codeKeyFindPassword" type="hidden"/>
+                        </span>
+                    </label>
+
                     <div class="clearfix">
-                        <button type="button" class="width-35 pull-right btn btn-sm btn-danger">
+                        <button id="findPasswordBtn" name="findPasswordBtn" type="button"
+                                class="width-35 pull-right btn btn-sm btn-danger">
                             <i class="icon-lightbulb"></i>
                             发送邮件
                         </button>
@@ -264,6 +278,15 @@
                         </span>
                     </label>
 
+                    <label class="block clearfix">
+                        <span>
+                            <input id="codeContentReg" name="codeContentReg" type="text" maxlength="4" placeholder="验证码">
+                            <img id="codeImgReg" name="codeImgReg" alt="点击换一张验证码" title="点击换一张验证码" src="" width="100"
+                                 height="29">
+                            <input id="codeKeyReg" name="codeKeyReg" type="hidden"/>
+                        </span>
+                    </label>
+
                     <label class="block">
                         <input id="agreeReg" name="agreeReg" type="checkbox" class="ace"/>
                         <span class="lbl">
@@ -312,7 +335,6 @@
 <!-- /.main-container -->
 
 <!-- basic scripts -->
-<script src="../../resources/js/jquery-1.8.3.min.js"></script>
 
 <script type="text/javascript">
     window.jQuery || document.write("<script src='<%=path%>/bootstrap/assets/js/jquery-2.0.3.min.js'>" + "<" + "/script>");

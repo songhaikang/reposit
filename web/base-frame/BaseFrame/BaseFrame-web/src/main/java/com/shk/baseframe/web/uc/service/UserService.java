@@ -58,11 +58,60 @@ public class UserService {
         return ucUserInfo;
     }
 
+
+
+    public JsonResult regUser(UserInfo userInfo){
+        JsonResult result = null;
+        UcUserInfo userCheck = regCheck(userInfo);
+        if (userCheck != null) {
+            if (userCheck.getEmail().equals(userInfo.getEmail())) {
+                result = new JsonResult(JsonResultContants.REG_EMAIL_EXSIT, JsonResultContants.REG_EMAIL_EXSIT_MSG);
+            } else if (userCheck.getUsername().equals(userInfo.getUsername())) {
+                result = new JsonResult(JsonResultContants.REG_USERNAME_EXSIT, JsonResultContants.REG_USERNAME_EXSIT_MSG);
+            }
+        } else {
+            add(userInfo);
+            result = new JsonResult(JsonResultContants.REG_SUCCESS, JsonResultContants.REG_SUCCESS_MSG);
+        }
+        return result;
+
+    }
+
+
     public UcUserInfo regCheck(UserInfo userInfo){
         UcUserInfo ucUserInfo = null;
         UcUserInfoExample example = new UcUserInfoExample();
         example.or(example.createCriteria().andEmailEqualTo(userInfo.getEmail()));
         example.or(example.createCriteria().andUsernameEqualTo(userInfo.getUsername()));
+        List<UcUserInfo> ucUserInfos = ucUserInfoMapper.selectByExample(example);
+        if (ucUserInfos != null && ucUserInfos.size() > 0) {
+            ucUserInfo = ucUserInfos.get(0);
+        }
+        return ucUserInfo;
+    }
+
+
+
+    public JsonResult findPasswordUser(String email){
+        JsonResult result = null;
+        UcUserInfo userCheck = findPasswordCheck(email);
+        if (userCheck != null) {
+
+            result = new JsonResult(JsonResultContants.FIND_PASSWORD_FAIL, JsonResultContants.FIND_PASSWORD_FAIL_MSG);
+            result = new JsonResult(JsonResultContants.FIND_PASSWORD_SUCCESS, JsonResultContants.FIND_PASSWORD_SUCCESS_MSG);
+
+        } else {
+            result = new JsonResult(JsonResultContants.FIND_PASSWORD_EMAIL_NOT_EXSIT, JsonResultContants.FIND_PASSWORD_EMAIL_NOT_EXSIT_MSG);
+        }
+        return result;
+
+    }
+
+
+    public UcUserInfo findPasswordCheck(String email){
+        UcUserInfo ucUserInfo = null;
+        UcUserInfoExample example = new UcUserInfoExample();
+        example.createCriteria().andEmailEqualTo(email);
         List<UcUserInfo> ucUserInfos = ucUserInfoMapper.selectByExample(example);
         if (ucUserInfos != null && ucUserInfos.size() > 0) {
             ucUserInfo = ucUserInfos.get(0);

@@ -14,8 +14,8 @@
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
 
 
-    <!-- 对包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能 -->
-    <context:component-scan base-package="com.shk.baseframe.web">
+    <!-- 对包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能,多个包之间用英文逗号隔开 -->
+    <context:component-scan base-package="com.shk.baseframe.web,com.shk.baseframe.api">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 

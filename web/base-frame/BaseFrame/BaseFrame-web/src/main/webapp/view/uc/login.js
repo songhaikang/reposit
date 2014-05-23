@@ -37,7 +37,7 @@ jQuery(function ($) {
     });
 
     function loginSuccess(takenValue) {
-        if (document.getElementById("remberPassword").checked) {
+        if ($("#remberPassword").attr("checked") == "checked") {
             app.setTokenToCookie(takenValue);
         }
     }
@@ -76,39 +76,48 @@ jQuery(function ($) {
 //注册画面处理
 jQuery(function ($) {
     var emailRegId = "#emailReg", usernameRegId = "#usernameReg", passwordRegId1 = "#passwordReg1", passwordRegId2 = "#passwordReg2",
-        agreeRegId = "#agreeReg", regTitleInitId = "#regTitleInit", regTitleWarnId = "#regTitleWarn", regTitleWarnMsgId = "#regTitleWarnMsg";
+        agreeRegId = "#agreeReg", regTitleInitId = "#regTitleInit", regTitleWarnId = "#regTitleWarn", regTitleWarnMsgId = "#regTitleWarnMsg",
+        codeContentRegId = "#codeContentReg", codeImgRegId = "#codeImgReg", codeKeyRegId = "#codeKeyReg";
 
     //点击登录画面的“注册帐号”
     $('#loginToReg').on('click', function () {
         $(regTitleWarnId).hide();
         $(regTitleInitId).show();
+        app.changeVerifyCode(codeKeyRegId, codeImgRegId)
+    });
+
+    $(codeImgRegId).on('click', function () {
+        app.changeVerifyCode(codeKeyRegId, codeImgRegId);
     });
 
     $('#regBtn').on('click', function () {
         if (checkContent()) {
-            var paramData = {"email": $(emailRegId).val(), "username": $(usernameRegId).val(), "password": $(passwordRegId1).val()};
+            var paramData = {"email": $(emailRegId).val(), "username": $(usernameRegId).val(), "password": $(passwordRegId1).val(),
+                codeKey: $(codeKeyRegId).val(), codeContent: $(codeContentRegId).val()};
             $.ajax({
                 type: "post",
                 async: true,//异步，如果等于false 那么就是同步
-                url: "/BaseFrame-web/uc/regUser.do",
+                url: "/BaseFrame-web/anonymous/uc/regUser.do",
                 dataType: "json",
                 data: paramData,
                 success: function (data) {
                     if (data != null) {
-                        alert(data.success + "|||" + data.msg);
-                        if (data.success == true) {
-                            alert("成功" + data.msg);
+                        if (data.statusCode == "REG_SUCCESS") {
+                            regSuccess();
                         }
-                        showWarnMsg(data.msg);
+                        showWarnMsg(data.statusMsg);
                     }
                 },
                 error: function (data) {
-                    showWarnMsg("请求服务器出错！" + data);
+                    showWarnMsg("请求服务器出错！");
                 }
             });
         }
     });
 
+    function regSuccess(){
+
+    }
 
     function checkContent() {
         if ($(emailRegId).val() == "") {
@@ -147,6 +156,12 @@ jQuery(function ($) {
             return false;
         }
 
+        if ($(codeContentRegId).val() == "") {
+            showWarnMsg("验证码不能为空！");
+            $(codeContentRegId).focus();
+            return false;
+        }
+
         return true;
     }
 
@@ -154,6 +169,79 @@ jQuery(function ($) {
         $(regTitleInitId).hide(1000);
         $(regTitleWarnId).show(1000);
         $(regTitleWarnMsgId).text(msg);
+    }
+
+
+});
+
+
+//找回密码画面处理
+jQuery(function ($) {
+    var emailFindPasswordId = "#emailFindPassword",
+        findPasswordTitleInitId = "#findPasswordTitleInit", findPasswordTitleWarnId = "#findPasswordTitleWarn", findPasswordTitleWarnMsgId = "#findPasswordTitleWarnMsg",
+        codeContentFindPasswordId = "#codeContentFindPassword", codeImgFindPasswordId = "#codeImgFindPassword", codeKeyFindPasswordId = "#codeKeyFindPassword";
+
+    //点击登录画面的“注册帐号”
+    $('#loginToFindPassword').on('click', function () {
+        $(findPasswordTitleWarnId).hide();
+        $(findPasswordTitleInitId).show();
+        app.changeVerifyCode(codeKeyFindPasswordId, codeImgFindPasswordId)
+    });
+
+    $(codeImgFindPasswordId).on('click', function () {
+        app.changeVerifyCode(codeKeyFindPasswordId, codeImgFindPasswordId);
+    });
+
+    $('#findPasswordBtn').on('click', function () {
+        if (checkContent()) {
+            var paramData = {"email": $(emailFindPasswordId).val(),
+                codeKey: $(codeKeyFindPasswordId).val(), codeContent: $(codeContentFindPasswordId).val()};
+            $.ajax({
+                type: "post",
+                async: true,//异步，如果等于false 那么就是同步
+                url: "/BaseFrame-web/anonymous/uc/findPasswordUser.do",
+                dataType: "json",
+                data: paramData,
+                success: function (data) {
+                    if (data != null) {
+                        if (data.statusCode == "FIND_PASSWORD_SUCCESS") {
+                            findPasswordSuccess();
+                        }
+                        showWarnMsg(data.statusMsg);
+                        app.changeVerifyCode(codeKeyFindPasswordId, codeImgFindPasswordId);
+                    }
+                },
+                error: function (data) {
+                    showWarnMsg("请求服务器出错！");
+                }
+            });
+        }
+    });
+
+    function findPasswordSuccess(){
+
+    }
+
+    function checkContent() {
+        if ($(emailFindPasswordId).val() == "") {
+            showWarnMsg("邮箱不能为空！");
+            $(emailFindPasswordId).focus();
+            return false;
+        }
+
+        if ($(codeContentFindPasswordId).val() == "") {
+            showWarnMsg("验证码不能为空！");
+            $(codeContentFindPasswordId).focus();
+            return false;
+        }
+
+        return true;
+    }
+
+    function showWarnMsg(msg) {
+        $(findPasswordTitleInitId).hide(1000);
+        $(findPasswordTitleWarnId).show(1000);
+        $(findPasswordTitleWarnMsgId).text(msg);
     }
 
 

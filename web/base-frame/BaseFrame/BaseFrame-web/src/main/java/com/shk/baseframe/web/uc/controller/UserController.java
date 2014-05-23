@@ -1,7 +1,6 @@
 package com.shk.baseframe.web.uc.controller;
 
 
-import com.shk.baseframe.api.uc.domain.UcUserInfo;
 import com.shk.baseframe.web.cache.verifycode.AccreditCodeCache;
 import com.shk.baseframe.web.cache.verifycode.VerifyCodeCache;
 import com.shk.baseframe.web.uc.domain.UserInfo;
@@ -75,18 +74,24 @@ public class UserController extends SimpleFormController {
 
     @ResponseBody
     @RequestMapping(value = "/anonymous/uc/regUser")
-    public JsonResult regUser(UserInfo userInfo) {
+    public JsonResult regUser(UserInfo userInfo, String codeKey, String codeContent) {
         JsonResult result = null;
-        UcUserInfo userCheck = userService.regCheck(userInfo);
-        if (userCheck != null) {
-            if (userCheck.getEmail().equals(userInfo.getEmail())) {
-                result = new JsonResult(JsonResultContants.REG_EMAIL_EXSIT, JsonResultContants.REG_EMAIL_EXSIT_MSG);
-            } else if (userCheck.getUsername().equals(userInfo.getUsername())) {
-                result = new JsonResult(JsonResultContants.REG_USERNAME_EXSIT, JsonResultContants.REG_USERNAME_EXSIT_MSG);
-            }
+        if (verifyCodeCache.checkVerifyCode(codeKey, codeContent)) {//验证码正确
+            result = userService.regUser(userInfo);
         } else {
-            userService.add(userInfo);
-            result = new JsonResult(JsonResultContants.REG_SUCCESS, JsonResultContants.REG_SUCCESS_MSG);
+            result = new JsonResult(JsonResultContants.VERIFY_CODE_FAIL, JsonResultContants.VERIFY_CODE_FAIL_MSG);
+        }
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/anonymous/uc/findPasswordUser")
+    public JsonResult findPasswordUser(String email, String codeKey, String codeContent){
+        JsonResult result = null;
+        if (verifyCodeCache.checkVerifyCode(codeKey, codeContent)) {//验证码正确
+            result = userService.findPasswordUser(email);
+        } else {
+            result = new JsonResult(JsonResultContants.VERIFY_CODE_FAIL, JsonResultContants.VERIFY_CODE_FAIL_MSG);
         }
         return result;
     }

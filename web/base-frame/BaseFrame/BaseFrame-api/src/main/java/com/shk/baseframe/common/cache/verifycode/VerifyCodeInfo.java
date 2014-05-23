@@ -1,4 +1,4 @@
-package com.shk.baseframe.web.cache.verifycode;
+package com.shk.baseframe.common.cache.verifycode;
 
 import java.util.List;
 
