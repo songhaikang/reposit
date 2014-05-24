@@ -1,5 +1,7 @@
 App = function () {//构造函数
     this.tokenKey = 'token';
+    this.baseUrl = "http://localhost:8081/BaseFrame-web";
+
 
 }
 
@@ -31,7 +33,7 @@ App.prototype = { //定义方法
         $.ajax({
             type: "post",
             async: true,//异步，如果等于false 那么就是同步
-            url: "/BaseFrame-web/anonymous/cache/getVerifyCode.do",
+            url: app.baseUrl + "/anonymous/cache/getVerifyCode.do",
             dataType: "json",
             data: paramData,
             success: function (data) {
@@ -41,7 +43,6 @@ App.prototype = { //定义方法
                 }
             },
             error: function (data) {
-                alert("请求服务器出错！" + data);
             }
         });
     },
@@ -60,7 +61,7 @@ App.prototype = { //定义方法
         $.ajax({
             type: "post",
             async: false,//异步，如果等于false 那么就是同步
-            url: "/BaseFrame-web/anonymous/cache/checkVerifyCode.do",
+            url: app.baseUrl +"/anonymous/cache/checkVerifyCode.do",
             dataType: "json",
             data: paramData,
             success: function (data) {

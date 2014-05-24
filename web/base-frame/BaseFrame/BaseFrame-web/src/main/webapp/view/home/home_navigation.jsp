@@ -63,7 +63,7 @@
 
     <ul class="nav nav-list">
         <li <% if (currentMenu.equalsIgnoreCase(MENU_HOME)) { %> class="active" <%} %> >
-            <a href="<%=path%>/bootstrap/view/index.jsp?<%=CURRENT_MENU_KEY%>=<%=MENU_HOME%>">
+            <a href="<%=path%>/view/index.jsp?<%=CURRENT_MENU_KEY%>=<%=MENU_HOME%>">
                 <i class="icon-dashboard"></i>
                 <span class="menu-text"> <%=MENU_HOME_TEXT%> </span>
             </a>
@@ -80,14 +80,14 @@
 
             <ul class="submenu">
                 <li <% if (currentMenu.equalsIgnoreCase(MENU_USER_INFO)) { %> class="active" <%} %> >
-                    <a href="<%=path%>/bootstrap/view/uc_user_info.jsp?<%=CURRENT_MENU_KEY%>=<%=MENU_USER_INFO%>">
+                    <a href="<%=path%>/view/uc/uc_user_info.jsp?<%=CURRENT_MENU_KEY%>=<%=MENU_USER_INFO%>">
                         <i class="icon-double-angle-right"></i>
                         <%=MENU_USER_INFO_TEXT%>
                     </a>
                 </li>
 
                 <li <% if (currentMenu.equalsIgnoreCase(MENU_USER_LIST)) { %> class="active" <%} %> >
-                    <a href="<%=path%>/bootstrap/view/uc_user_ctrl.jsp?<%=CURRENT_MENU_KEY%>=<%=MENU_USER_LIST%>">
+                    <a href="<%=path%>/view/uc/uc_user_ctrl.jsp?<%=CURRENT_MENU_KEY%>=<%=MENU_USER_LIST%>">
                         <i class="icon-double-angle-right"></i>
                         <%=MENU_USER_LIST_TEXT%>
                     </a>
@@ -107,21 +107,21 @@
 
             <ul class="submenu">
                 <li <% if (currentMenu.equalsIgnoreCase(MENU_BUG_PROJECTCTRL)) { %> class="active" <%} %> >
-                    <a href="<%=path%>/bootstrap/view/bug_project_ctrl.jsp?<%=CURRENT_MENU_KEY%>=<%=MENU_BUG_PROJECTCTRL%>">
+                    <a href="<%=path%>/view/project/bug_project_ctrl.jsp?<%=CURRENT_MENU_KEY%>=<%=MENU_BUG_PROJECTCTRL%>">
                         <i class="icon-double-angle-right"></i>
                         <%=MENU_BUG_PROJECTCTRL_TEXT%>
                     </a>
                 </li>
 
                 <li <% if (currentMenu.equalsIgnoreCase(MENU_BUG_INFOADD)) { %> class="active" <%} %> >
-                    <a href="<%=path%>/bootstrap/view/bug_info_add.jsp?<%=CURRENT_MENU_KEY%>=<%=MENU_BUG_INFOADD%>">
+                    <a href="<%=path%>/view/project/bug_info_add.jsp?<%=CURRENT_MENU_KEY%>=<%=MENU_BUG_INFOADD%>">
                         <i class="icon-double-angle-right"></i>
                         <%=MENU_BUG_INFOADD_TEXT%>
                     </a>
                 </li>
 
                 <li <% if (currentMenu.equalsIgnoreCase(MENU_BUG_INFOLIST)) { %> class="active" <%} %> >
-                    <a href="<%=path%>/bootstrap/view/bug_info_list.jsp?<%=CURRENT_MENU_KEY%>=<%=MENU_BUG_INFOLIST%>">
+                    <a href="<%=path%>/view/project/bug_info_list.jsp?<%=CURRENT_MENU_KEY%>=<%=MENU_BUG_INFOLIST%>">
                         <i class="icon-double-angle-right"></i>
                         <%=MENU_BUG_INFOLIST_TEXT%>
                     </a>
@@ -132,7 +132,7 @@
 
 
         <li <% if (currentMenu.equalsIgnoreCase(MENU_CALENDAR)) { %> class="active" <%} %> >
-            <a href="<%=path%>/bootstrap/view/calendar.jsp?<%=CURRENT_MENU_KEY%>=<%=MENU_CALENDAR%>">
+            <a href="<%=path%>/view/utils/calendar.jsp?<%=CURRENT_MENU_KEY%>=<%=MENU_CALENDAR%>">
                 <i class="icon-calendar"></i>
 
                     <span class="menu-text">
@@ -146,7 +146,7 @@
         </li>
 
         <li <% if (currentMenu.equalsIgnoreCase(MENU_GALLERY)) { %> class="active" <%} %> >
-            <a href="<%=path%>/bootstrap/view/gallery.jsp?<%=CURRENT_MENU_KEY%>=<%=MENU_GALLERY%>">
+            <a href="<%=path%>/view/utils/gallery.jsp?<%=CURRENT_MENU_KEY%>=<%=MENU_GALLERY%>">
                 <i class="icon-picture"></i>
                 <span class="menu-text"> <%=MENU_GALLERY_TEXT%> </span>
             </a>
@@ -182,7 +182,7 @@
         <ul class="breadcrumb">
             <li>
                 <i class="icon-home home-icon"></i>
-                <a href="<%=path%>/bootstrap/view/index.jsp?<%=CURRENT_MENU_KEY%>=<%=MENU_HOME%>">首页</a>
+                <a href="<%=path%>/view/index.jsp?<%=CURRENT_MENU_KEY%>=<%=MENU_HOME%>">首页</a>
             </li>
 
             <% if (currentMenu.equalsIgnoreCase(MENU_HOME)) { %>

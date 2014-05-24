@@ -28,17 +28,17 @@ import java.util.Random;
 @Controller
 @RequestMapping("/anonymous/cache")
 public class VerifyCodeController {
-    private int width = 90;//定义图片的width
-    private int height = 20;//定义图片的height
+    private int width = 95;//定义图片的width
+    private int height = 25;//定义图片的height
     private int codeCount = 4;//定义图片上显示验证码的个数
     private int fontHeight = 18;//字体大小
     private int interferingLineNum = 20;//干扰线的条数
     private int interferingLineLength = 12;//干扰线的长度
     private int codeX = 15;//每个验证码字符所占的宽度
-    private int codeY = 16;//每个验证码自负所占的高度
+    private int codeY = 20;//每个验证码自负所占的高度
     char[] codeSequence = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
-            'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
-            'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+            'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
+            'X', 'Y', 'Z', '1', '2', '3', '4', '5', '6', '7', '8', '9'}; //去掉了字幕o和数字0这两个容易混淆的字符
 
     @Autowired
     VerifyCodeCache verifyCodeCache;

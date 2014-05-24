@@ -16,7 +16,7 @@ jQuery(function ($) {
             $.ajax({
                 type: "post",
                 async: true,//异步，如果等于false 那么就是同步
-                url: "/BaseFrame-web/anonymous/uc/loginUserWithVerifyCode.do",
+                url: app.baseUrl + "/anonymous/uc/loginUserWithVerifyCode.do",
                 dataType: "json",
                 data: paramData,
                 success: function (data) {
@@ -40,6 +40,7 @@ jQuery(function ($) {
         if ($("#remberPassword").attr("checked") == "checked") {
             app.setTokenToCookie(takenValue);
         }
+        window.location.href= app.baseUrl + "/view/index.jsp";
     }
 
     function checkContent() {
@@ -97,7 +98,7 @@ jQuery(function ($) {
             $.ajax({
                 type: "post",
                 async: true,//异步，如果等于false 那么就是同步
-                url: "/BaseFrame-web/anonymous/uc/regUser.do",
+                url: app.baseUrl + "/anonymous/uc/regUser.do",
                 dataType: "json",
                 data: paramData,
                 success: function (data) {
@@ -115,7 +116,7 @@ jQuery(function ($) {
         }
     });
 
-    function regSuccess(){
+    function regSuccess() {
 
     }
 
@@ -199,7 +200,7 @@ jQuery(function ($) {
             $.ajax({
                 type: "post",
                 async: true,//异步，如果等于false 那么就是同步
-                url: "/BaseFrame-web/anonymous/uc/findPasswordUser.do",
+                url: app.baseUrl + "/anonymous/uc/findPasswordUser.do",
                 dataType: "json",
                 data: paramData,
                 success: function (data) {
@@ -218,7 +219,7 @@ jQuery(function ($) {
         }
     });
 
-    function findPasswordSuccess(){
+    function findPasswordSuccess() {
 
     }
 
