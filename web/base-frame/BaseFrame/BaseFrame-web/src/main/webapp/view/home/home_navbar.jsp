@@ -113,10 +113,10 @@
         <li>
             <a href="#">
                 <div class="clearfix">
-											<span class="pull-left">
-												<i class="btn btn-xs no-hover btn-pink icon-comment"></i>
-												新闻评论
-											</span>
+                    <span class="pull-left">
+                        <i class="btn btn-xs no-hover btn-pink icon-comment"></i>
+                        新闻评论
+                    </span>
                     <span class="pull-right badge badge-info">+12</span>
                 </div>
             </a>
@@ -132,10 +132,10 @@
         <li>
             <a href="#">
                 <div class="clearfix">
-											<span class="pull-left">
-												<i class="btn btn-xs no-hover btn-success icon-shopping-cart"></i>
-												新订单
-											</span>
+                    <span class="pull-left">
+                        <i class="btn btn-xs no-hover btn-success icon-shopping-cart"></i>
+                        新订单
+                    </span>
                     <span class="pull-right badge badge-success">+8</span>
                 </div>
             </a>
@@ -144,10 +144,10 @@
         <li>
             <a href="#">
                 <div class="clearfix">
-											<span class="pull-left">
-												<i class="btn btn-xs no-hover btn-info icon-twitter"></i>
-												粉丝
-											</span>
+                    <span class="pull-left">
+                        <i class="btn btn-xs no-hover btn-info icon-twitter"></i>
+                        粉丝
+                    </span>
                     <span class="pull-right badge badge-info">+11</span>
                 </div>
             </a>
@@ -177,51 +177,51 @@
         <li>
             <a href="#">
                 <img src="<%=path%>/bootstrap/assets/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar"/>
-										<span class="msg-body">
-											<span class="msg-title">
-												<span class="blue">Alex:</span>
-												不知道写啥 ...
-											</span>
+                <span class="msg-body">
+                    <span class="msg-title">
+                        <span class="blue">Alex:</span>
+                        不知道写啥 ...
+                    </span>
 
-											<span class="msg-time">
-												<i class="icon-time"></i>
-												<span>1分钟以前</span>
-											</span>
-										</span>
+                    <span class="msg-time">
+                        <i class="icon-time"></i>
+                        <span>1分钟以前</span>
+                    </span>
+                </span>
             </a>
         </li>
 
         <li>
             <a href="#">
                 <img src="<%=path%>/bootstrap/assets/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar"/>
-										<span class="msg-body">
-											<span class="msg-title">
-												<span class="blue">Susan:</span>
-												不知道翻译...
-											</span>
+                <span class="msg-body">
+                    <span class="msg-title">
+                        <span class="blue">Susan:</span>
+                        不知道翻译...
+                    </span>
 
-											<span class="msg-time">
-												<i class="icon-time"></i>
-												<span>20分钟以前</span>
-											</span>
-										</span>
+                    <span class="msg-time">
+                        <i class="icon-time"></i>
+                        <span>20分钟以前</span>
+                    </span>
+                </span>
             </a>
         </li>
 
         <li>
             <a href="#">
                 <img src="<%=path%>/bootstrap/assets/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar"/>
-										<span class="msg-body">
-											<span class="msg-title">
-												<span class="blue">Bob:</span>
-												到底是不是英文 ...
-											</span>
+                <span class="msg-body">
+                    <span class="msg-title">
+                        <span class="blue">Bob:</span>
+                        到底是不是英文 ...
+                    </span>
 
-											<span class="msg-time">
-												<i class="icon-time"></i>
-												<span>下午3:15</span>
-											</span>
-										</span>
+                    <span class="msg-time">
+                        <i class="icon-time"></i>
+                        <span>下午3:15</span>
+                    </span>
+                </span>
             </a>
         </li>
 
@@ -236,11 +236,12 @@
 
 <li class="light-blue">
     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-        <img class="nav-user-photo" src="<%=path%>/bootstrap/assets/avatars/user.jpg" alt="Jason's Photo"/>
-								<span class="user-info">
-									<small>欢迎光临,</small>
-									Jason
-								</span>
+        <img id="headPhoto" name="headPhoto" class="nav-user-photo" src="<%=path%>/bootstrap/assets/avatars/user.jpg"
+             alt="Jason's Photo"/>
+        <span class="user-info">
+            <small>欢迎光临,</small>
+            <span id="username" name="username">Jason</span>
+        </span>
 
         <i class="icon-caret-down"></i>
     </a>
@@ -278,4 +279,17 @@
 <!-- /.container -->
 </div>
 
+
+<script>
+    initUserInfo();
+    function initUserInfo(){
+        var userInfo = app.getUserInfoByCookie();
+        if (userInfo != null) {
+            $("#username").text(userInfo.username);
+            if (!app.isEmpty(userInfo.headPhoto)) {
+                $("#headPhoto").attr('src', userInfo.headPhoto);
+            }
+        }
+    }
+</script>
 

@@ -14,7 +14,7 @@ jQuery(function ($) {
             var paramData = {"username": $(usernameId).val(), "password": $(passwordId).val(),
                 codeKey: $(codeKeyLoginId).val(), codeContent: $(codeContentLoginId).val()};
             $.ajax({
-                type: "post",
+                type: "get",
                 async: true,//异步，如果等于false 那么就是同步
                 url: app.baseUrl + "/anonymous/uc/loginUserWithVerifyCode.do",
                 dataType: "json",
@@ -22,7 +22,7 @@ jQuery(function ($) {
                 success: function (data) {
                     if (data != null) {
                         if (data.statusCode == "LOGIN_SUCCESS") {
-                            loginSuccess(data.token);
+                            loginSuccess(data.content, data.token);
                         }
                         showWarnMsg(data.statusMsg);
                         app.changeVerifyCode(codeKeyLoginId, codeImgLoginId);
@@ -36,11 +36,14 @@ jQuery(function ($) {
 
     });
 
-    function loginSuccess(takenValue) {
+    function loginSuccess(content, takenValue) {
         if ($("#remberPassword").attr("checked") == "checked") {
-            app.setTokenToCookie(takenValue);
+            app.setTokenToCookie(takenValue);//如果是记住密码，则将Token信息存入cookie中
+        }else{
+            app.setTokenToCookie("");
         }
-        window.location.href= app.baseUrl + "/view/index.jsp";
+        app.setUserInfoToCookie(content);//将用户信息缓存到cookie中
+        window.location.href = app.baseUrl + "/view/index.jsp";
     }
 
     function checkContent() {

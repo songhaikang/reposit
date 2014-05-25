@@ -44,6 +44,11 @@
     <script src="<%=path%>/bootstrap/assets/js/html5shiv.js"></script>
     <script src="<%=path%>/bootstrap/assets/js/respond.min.js"></script>
     <![endif]-->
+
+
+
+    <script src="<%=path%>/resources/js/jquery-1.8.3.min.js"></script>
+    <script src="<%=path%>/resources/js/app.js"></script>
 </head>
 
 <body class="login-layout">
@@ -362,8 +367,6 @@
 </script>
 
 
-<script src="<%=path%>/resources/js/jquery-1.8.3.min.js"></script>
-<script src="<%=path%>/resources/js/app.js"></script>
 <script src="<%=path%>/view/uc/login.js"></script>
 
 </body>

@@ -1,26 +1,52 @@
 App = function () {//构造函数
-    this.tokenKey = 'token';
+    this.tokenKey = "token";
+    this.userInfo = "userInfo";
     this.baseUrl = "http://localhost:8081/BaseFrame-web";
 
 
 }
 
 App.prototype = { //定义方法
+
+    setTokenToCookie: function (tokenValue) {
+        var Days = 7;
+        var exp = new Date();
+        exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+        document.cookie = this.tokenKey + "=" + encodeURI(tokenValue) + ";expires=" + exp.toGMTString();
+    },
+
     getTokenByCookie: function () {
         var arr = document.cookie.match(new RegExp("(^| )" + this.tokenKey + "=([^;]*)(;|$)"));
         if (arr != null) {
-            return unescape(arr[2]);
+            return decodeURI(arr[2]);
         } else {
             return "";
         }
     },
 
-    setTokenToCookie: function (value) {
+    setUserInfoToCookie: function (userInfoJson) {
         var Days = 7;
         var exp = new Date();
         exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
-        document.cookie = this.tokenKey + "=" + escape(value) + ";expires=" + exp.toGMTString();
+//        var userInfoJson = JSON.stringify(userInfo);//JSON对象转换为JSON字符串
+        document.cookie = this.userInfo + "=" + encodeURI(userInfoJson) + ";expires=" + exp.toGMTString();
     },
+
+    getUserInfoByCookie: function () {
+        var userInfoJsonContent = document.cookie.match(new RegExp("(^| )" + this.userInfo + "=([^;]*)(;|$)"));
+        var userInfoJson = decodeURI(userInfoJsonContent[2]);
+        var userInfo = JSON.parse(userInfoJson);
+        return userInfo;
+    },
+
+    isEmpty: function (value) {
+        if (value == null || value == undefined || value == "undefined" || value.length < 1) {
+            return true;
+        } else {
+            return false;
+        }
+    },
+
 
     /**
      * 更换验证码
@@ -38,7 +64,7 @@ App.prototype = { //定义方法
             data: paramData,
             success: function (data) {
                 if (data != null) {
-                    $(codeImgId).attr('src', data.imgUrl)
+                    $(codeImgId).attr('src', data.imgUrl);
                     $(codeKeyId).val(data.codeKey);
                 }
             },
@@ -61,7 +87,7 @@ App.prototype = { //定义方法
         $.ajax({
             type: "post",
             async: false,//异步，如果等于false 那么就是同步
-            url: app.baseUrl +"/anonymous/cache/checkVerifyCode.do",
+            url: app.baseUrl + "/anonymous/cache/checkVerifyCode.do",
             dataType: "json",
             data: paramData,
             success: function (data) {

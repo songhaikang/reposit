@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>测试</title>
+    <script type="text/javascript">
+
+        test();
+        function test() {
+            alert("调用了函数！");
+            var json = {"email": "songhaikang@163.com", "state": "USER_STATE_NORMAL", "userId": "c8dd44ab8191433f842eff7572b9e7fc", "username": "songhaikang"};
+            alert("从JSON字符串中取出邮箱：" + json.email);
+            var jsonString = JSON.stringify(json);
+            alert("JSON对象转换为字符串之后：" + jsonString);
+            setCookie2(jsonString);
+            alert("放入cookie完毕");
+            getCookie2();
+
+        }
+
+        function setCookie(value) {
+            var Days = 7;
+            var exp = new Date();
+            exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+            document.cookie = "tokenKey" + "=" + encodeURI(value) + ";expires=" + exp.toGMTString();
+        }
+
+        function getCookie() {
+            var arr = document.cookie.match(new RegExp("(^| )" + "tokenKey" + "=([^;]*)(;|$)"));
+            var userInfoString = unescape(arr[2]);
+            alert("从Cookie中取出的JSON字符串："+userInfoString);
+            var userInfo = JSON.parse(userInfoString);
+            alert("从Cookie中取出对象的username值:"+userInfo.username);
+        }
+
+        function setCookie2(value) {
+            var Days = 7;
+            var exp = new Date();
+            exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+            document.cookie = "tokenKey2" + "=" + value + ";expires=" + exp.toGMTString();
+        }
+
+        function getCookie2() {
+            var arr = document.cookie.match(new RegExp("(^| )" + "tokenKey2" + "=([^;]*)(;|$)"));
+            var userInfoString = arr[2];
+            alert("从Cookie中取出的JSON字符串："+userInfoString);
+            var userInfo = JSON.parse(userInfoString);
+            alert("从Cookie中取出对象的username值:"+userInfo.username);
+        }
+
+
+    </script>
+</head>
+<body>
+</body>
+</html>

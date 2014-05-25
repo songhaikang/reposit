@@ -19,18 +19,30 @@ public class JsonResult {
 
     private long timestamp = new Date().getTime();
 
-    public JsonResult(){}
+    public JsonResult() {
+    }
 
-    public JsonResult(String statusCode, String statusMsg){
+    public JsonResult(String statusCode, String statusMsg) {
         this.statusCode = statusCode;
         this.statusMsg = statusMsg;
     }
 
-    public JsonResult(String statusCode, String statusMsg, String content){
+    public JsonResult(String statusCode, String statusMsg, String content) {
         this.statusCode = statusCode;
         this.statusMsg = statusMsg;
         this.content = content;
     }
+
+    public void setContentToJsonString(Object object) {
+        this.content = JsonUtils.toJSONString(object);
+    }
+
+    public <T> T getContentObject(Class<T> clazz){
+          return JsonUtils.parseObject(this.content, clazz);
+    }
+
+
+
 
 
     public String getStatusCode() {

@@ -1,5 +1,6 @@
 package com.shk.baseframe.web.uc.service;
 
+import com.alibaba.fastjson.JSON;
 import com.shk.baseframe.common.cache.token.TokenCache;
 import com.shk.baseframe.common.character.DesEncrypt;
 import com.shk.baseframe.common.character.StringUtils;
@@ -51,6 +52,8 @@ public class UserService {
             result.setStatusCode(JsonResultContants.LOGIN_SUCCESS);
             result.setStatusMsg(JsonResultContants.LOGIN_SUCCESS_MSG);
             result.setToken(token);
+            ucUserinfo.setPassword(null);
+            result.setContentToJsonString(ucUserinfo);
         }
         return result;
     }
