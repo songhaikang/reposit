@@ -1,6 +1,5 @@
 package com.shk.baseframe.web.uc.service;
 
-import com.alibaba.fastjson.JSON;
 import com.shk.baseframe.common.cache.token.TokenCache;
 import com.shk.baseframe.common.character.DesEncrypt;
 import com.shk.baseframe.common.character.StringUtils;
@@ -8,15 +7,16 @@ import com.shk.baseframe.common.dbmapper.uc.domain.UcUserInfo;
 import com.shk.baseframe.common.dbmapper.uc.domain.UcUserInfoExample;
 import com.shk.baseframe.common.dbmapper.uc.mapper.UcUserInfoMapper;
 import com.shk.baseframe.common.utils.JsonResult;
+import com.shk.baseframe.web.uc.domain.UserContants;
 import com.shk.baseframe.web.uc.domain.UserInfo;
 import com.shk.baseframe.web.uc.mapper.UserInfoMapper;
-import com.shk.baseframe.web.utils.AppContents;
 import com.shk.baseframe.web.utils.JsonResultContants;
 import com.shk.baseframe.web.utils.MailSendUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -61,7 +61,7 @@ public class UserService {
     public UcUserInfo login(String username, String password) {
         UcUserInfo ucUserInfo = null;
         UcUserInfoExample example = new UcUserInfoExample();
-        example.createCriteria().andUsernameEqualTo(username).andPasswordEqualTo(DesEncrypt.encrypt(password, AppContents.PASSWORD_DES));
+        example.createCriteria().andUsernameEqualTo(username).andPasswordEqualTo(DesEncrypt.encrypt(password, UserContants.PASSWORD_DES));
         List<UcUserInfo> ucUserInfos = ucUserInfoMapper.selectByExample(example);
         if (ucUserInfos != null && ucUserInfos.size() > 0) {
             ucUserInfo = ucUserInfos.get(0);
@@ -105,7 +105,7 @@ public class UserService {
         JsonResult result = null;
         UcUserInfo userCheck = findPasswordCheck(email);
         if (userCheck != null) {
-            String password = DesEncrypt.decrypt(userCheck.getPassword(), AppContents.PASSWORD_DES);
+            String password = DesEncrypt.decrypt(userCheck.getPassword(), UserContants.PASSWORD_DES);
             try {
                 mailSendUtils.sendFindPasswordMail(email, password);
                 result = new JsonResult(JsonResultContants.FIND_PASSWORD_SUCCESS, JsonResultContants.FIND_PASSWORD_SUCCESS_MSG);
@@ -146,7 +146,10 @@ public class UserService {
 
 
     public void update(UcUserInfo userInfo) {
-        ucUserInfoMapper.updateByPrimaryKey(userInfo);
+        if(StringUtils.isNotBlank(userInfo.getPassword())){
+            userInfo.setPassword(DesEncrypt.encrypt(userInfo.getPassword(), UserContants.PASSWORD_DES));
+        }
+        ucUserInfoMapper.updateByPrimaryKeySelective(userInfo);
     }
 
 
@@ -156,9 +159,11 @@ public class UserService {
 
 
     public void add(UcUserInfo userInfo) {
-        userInfo.setPassword(DesEncrypt.encrypt(userInfo.getPassword(), AppContents.PASSWORD_DES));
+        userInfo.setPassword(DesEncrypt.encrypt(userInfo.getPassword(), UserContants.PASSWORD_DES));
         userInfo.setState(JsonResultContants.USER_STATE_NORMAL);
         userInfo.setUserId(StringUtils.getUUID());
+        userInfo.setCreateTime(new Date());
+
         ucUserInfoMapper.insert(userInfo);
     }
 }

@@ -6,36 +6,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <jsp:include page="/view/home/home_head.jsp"/>
+    <meta charset="utf-8"/>
+    <title>jquery网格插件 - Bootstrap后台管理系统模版Ace下载</title>
 
-    <%--<link rel="stylesheet" href="<%=path%>/bootstrap/assets/css/jquery-ui-1.10.3.full.min.css"/>--%>
-    <%--<link rel="stylesheet" href="<%=path%>/bootstrap/assets/css/datepicker.css"/>--%>
-    <%--<link rel="stylesheet" href="<%=path%>/bootstrap/assets/css/ui.jqgrid.css"/>--%>
+    <meta name="keywords" content="Bootstrap模版,Bootstrap模版下载,Bootstrap教程,Bootstrap中文"/>
+    <meta name="description" content="站长素材提供Bootstrap模版,Bootstrap教程,Bootstrap中文翻译等相关Bootstrap插件下载"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+    <!-- basic styles -->
+
+    <link href="<%=path%>/bootstrap/assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="<%=path%>/bootstrap/assets/css/font-awesome.min.css"/>
+
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="<%=path%>/bootstrap/assets/css/font-awesome-ie7.min.css"/>
+    <![endif]-->
+
+    <!-- page specific plugin styles -->
+
+    <link rel="stylesheet" href="<%=path%>/bootstrap/assets/css/jquery-ui-1.10.3.full.min.css"/>
+    <link rel="stylesheet" href="<%=path%>/bootstrap/assets/css/datepicker.css"/>
+    <link rel="stylesheet" href="<%=path%>/bootstrap/assets/css/ui.jqgrid.css"/>
+
+    <!-- fonts -->
+
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300"/>
+
+    <!-- ace styles -->
+
+    <link rel="stylesheet" href="<%=path%>/bootstrap/assets/css/ace.min.css"/>
+    <link rel="stylesheet" href="<%=path%>/bootstrap/assets/css/ace-rtl.min.css"/>
+    <link rel="stylesheet" href="<%=path%>/bootstrap/assets/css/ace-skins.min.css"/>
+
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="<%=path%>/bootstrap/assets/css/ace-ie.min.css"/>
+    <![endif]-->
+
+    <!-- inline styles related to this page -->
+
+    <!-- ace settings handler -->
+
+    <script src="<%=path%>/bootstrap/assets/js/ace-extra.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!--[if lt IE 9]>
+    <script src="<%=path%>/bootstrap/assets/js/html5shiv.js"></script>
+    <script src="<%=path%>/bootstrap/assets/js/respond.min.js"></script>
+    <![endif]-->
 </head>
 
 <body>
-
-<jsp:include page="/view/home/home_navbar.jsp"/>
-
-<div class="main-container" id="main-container">
-    <script type="text/javascript">
-        try {
-            ace.settings.check('main-container', 'fixed')
-        } catch (e) {
-        }
-    </script>
-
-    <div class="main-container-inner">
-        <a class="menu-toggler" id="menu-toggler" href="#">
-            <span class="menu-text"></span>
-        </a>
-
 <jsp:include page="/view/home/home_navigation.jsp"/>
 
 
 <div class="row">
     <div class="col-xs-12">
+        <!-- PAGE CONTENT BEGINS -->
+
+        <div class="alert alert-info">
+            <i class="icon-hand-right"></i>
+
+            Please note that demo server is not configured to save the changes, therefore you may get an error message.
+            <button class="close" data-dismiss="alert">
+                <i class="icon-remove"></i>
+            </button>
+        </div>
+
         <table id="grid-table"></table>
 
         <div id="grid-pager"></div>
@@ -49,8 +86,6 @@
     <!-- /.col -->
 </div>
 <!-- /.row -->
-
-
 </div><!-- /.page-content -->
 </div><!-- /.main-content -->
 
@@ -142,11 +177,12 @@ jQuery(function ($) {
 
     jQuery(grid_selector).jqGrid({
         //direction: "rtl",
+
         mtype:"POST",//请求的类型：(“POST” or “GET”)	默认GET
         datatype: "json",//表格可以被接受的数据类型：xml，xmlstring，json，local，function
         jsonReader : {root:"dataRows",id: "userId"},//root:设置记录集的属性名称，id:设置主键的属性名称
-        editurl:"<%=path%>/admin/uc/editUserInfo.do",//定义对form编辑时的url（增删改的时候使用）
-        url:"<%=path%>/admin/uc/getUserList.do",
+        editurl:"<%=path%>/uc/editUserInfo.do",//定义对form编辑时的url（增删改的时候使用）
+        url:"<%=path%>/uc/getUserList.do",
         rowNum: 10,
         rowList: [10, 20, 30],
         pager: pager_selector,
@@ -154,14 +190,15 @@ jQuery(function ($) {
         altRows: true,
         caption: "用户信息维护",
         viewrecords: true,
-        height: 350,
+        height: 250,
         colNames: ['操作', 'ID', '用户名', '密码', '邮箱', '手机号', '生日', '性别', '用户状态', '注册日期'],
         colModel: [
             {name: 'myac', index: '', width: 80, fixed: true, sortable: false, resize: false,
                 formatter: 'actions',
                 formatoptions: {
                     keys: true,
-                    delOptions: {recreateForm: true, beforeShowForm: beforeDeleteCallback}
+
+                    delOptions: {recreateForm: true, beforeShowForm: beforeDeleteCallback},
                     //editformbutton:true, editOptions:{recreateForm: true, beforeShowForm:beforeEditCallback}
                 }
             },
@@ -172,7 +209,7 @@ jQuery(function ($) {
             {name: 'mobilePhone', index: 'mobilePhone', width: 100, editable: true, editoptions: {size: "20", maxlength: "30"}},
             {name: 'brithday', index: 'brithday', width: 90, editable: true, sorttype: "date", unformat: pickDate},
             {name: 'sex', index: 'sex', width: 70, editable: true, edittype: "checkbox", editoptions: {value: "男:女"}, unformat: aceSwitch},
-            {name: 'state', index: 'state', width: 90, editable: true, edittype: "select", editoptions: {value: "USER_STATE_NORMAL:正常;OFF:禁用;TN:冻结;AR:无效"}},
+            {name: 'state', index: 'state', width: 90, editable: true, edittype: "select", editoptions: {value: "NORMOL:正常;OFF:禁用;TN:冻结;AR:无效"}},
             {name: 'createTime', index: 'createTime', width: 90, editable: false, sorttype: "date", unformat: pickDate}
         ],
 
@@ -285,7 +322,7 @@ jQuery(function ($) {
                 afterRedraw: function () {
                     style_search_filters($(this));
                 },
-                multipleSearch: true
+                multipleSearch: true,
                 /**
                  multipleGroup:true,
                  showQuery: true

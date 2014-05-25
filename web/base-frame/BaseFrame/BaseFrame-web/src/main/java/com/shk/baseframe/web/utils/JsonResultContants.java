@@ -6,6 +6,9 @@ package com.shk.baseframe.web.utils;
 public class JsonResultContants {
 
 
+    public final static String SUCCESS = "SUCCESS";//操作成功
+    public final static String FAIL = "FAIL";//操作失败
+
     public final static String TOKEN_TIME_OUT = "TOKEN_TIME_OUT";
     public final static String TOKEN_TIME_OUT_MSG = "登录信息已经过期，请重新登录！";
 
