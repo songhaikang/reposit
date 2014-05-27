@@ -7,6 +7,7 @@ import com.shk.baseframe.common.dbmapper.uc.domain.UcUserInfo;
 import com.shk.baseframe.common.dbmapper.uc.domain.UcUserInfoExample;
 import com.shk.baseframe.common.dbmapper.uc.mapper.UcUserInfoMapper;
 import com.shk.baseframe.common.utils.JsonResult;
+import com.shk.baseframe.svc.uc.domain.UserContants;
 import com.shk.baseframe.svc.uc.domain.UserInfo;
 import com.shk.baseframe.svc.uc.mapper.UserInfoMapper;
 import com.shk.baseframe.svc.utils.AppContents;
@@ -43,9 +44,9 @@ public class UserService {
         UcUserInfo ucUserinfo = login(username, password);
         if (ucUserinfo == null) {
             result = new JsonResult(JsonResultContants.LOGIN_USERNAME_PASSWORD_ERROR, JsonResultContants.LOGIN_USERNAME_PASSWORD_ERROR_MSG);
-        } else if (ucUserinfo.getState().equals(JsonResultContants.USER_STATE_FORBIDDEN)) {
+        } else if (ucUserinfo.getStatus().equals(JsonResultContants.USER_STATE_FORBIDDEN)) {
             result = new JsonResult(JsonResultContants.USER_STATE_FORBIDDEN, JsonResultContants.USER_STATE_FORBIDDEN_MSG);
-        } else if (ucUserinfo.getState().equals(JsonResultContants.USER_STATE_NORMAL)) {
+        } else if (ucUserinfo.getStatus().equals(JsonResultContants.USER_STATE_NORMAL)) {
             String token = tokenCache.addToken(ucUserinfo.getUserId());
             result = new JsonResult();
             result.setStatusCode(JsonResultContants.LOGIN_SUCCESS);
@@ -58,7 +59,7 @@ public class UserService {
     public UcUserInfo login(String username, String password) {
         UcUserInfo ucUserInfo = null;
         UcUserInfoExample example = new UcUserInfoExample();
-        example.createCriteria().andUsernameEqualTo(username).andPasswordEqualTo(DesEncrypt.encrypt(password, AppContents.PASSWORD_DES));
+        example.createCriteria().andUsernameEqualTo(username).andPasswordEqualTo(DesEncrypt.encrypt(password, UserContants.PASSWORD_DES));
         List<UcUserInfo> ucUserInfos = ucUserInfoMapper.selectByExample(example);
         if (ucUserInfos != null && ucUserInfos.size() > 0) {
             ucUserInfo = ucUserInfos.get(0);
@@ -102,7 +103,7 @@ public class UserService {
         JsonResult result = null;
         UcUserInfo userCheck = findPasswordCheck(email);
         if (userCheck != null) {
-            String password = DesEncrypt.decrypt(userCheck.getPassword(), AppContents.PASSWORD_DES);
+            String password = DesEncrypt.decrypt(userCheck.getPassword(), UserContants.PASSWORD_DES);
             try {
                 mailSendUtils.sendFindPasswordMail(email, password);
                 result = new JsonResult(JsonResultContants.FIND_PASSWORD_SUCCESS, JsonResultContants.FIND_PASSWORD_SUCCESS_MSG);
@@ -153,8 +154,8 @@ public class UserService {
 
 
     public void add(UcUserInfo userInfo) {
-        userInfo.setPassword(DesEncrypt.encrypt(userInfo.getPassword(), AppContents.PASSWORD_DES));
-        userInfo.setState(JsonResultContants.USER_STATE_NORMAL);
+        userInfo.setPassword(DesEncrypt.encrypt(userInfo.getPassword(), UserContants.PASSWORD_DES));
+        userInfo.setStatus(JsonResultContants.USER_STATE_NORMAL);
         userInfo.setUserId(StringUtils.getUUID());
         ucUserInfoMapper.insert(userInfo);
     }

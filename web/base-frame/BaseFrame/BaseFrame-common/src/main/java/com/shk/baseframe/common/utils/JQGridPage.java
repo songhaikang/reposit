@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * 使用JQGrid分页时用到的对象
  */
-public class PageJQGrid {
+public class JQGridPage {
 
 
     /**
@@ -17,17 +17,22 @@ public class PageJQGrid {
     /**
      * 总页数
      */
-    private int total = 3;
+    private int total = 0;
 
     /**
      * 总记录数
      */
-    private int records = 30;
+    private int records = 0;
 
     /**
      * 每页显示的条数
      */
     private int rows = 10;
+
+    /**
+     * 分页起始记录位置
+     */
+    private int pageFirst;
 
 
     /**
@@ -47,7 +52,38 @@ public class PageJQGrid {
     private long nd;
 
 
+    /**
+     * 当前排序字段
+     */
     private String sidx;
+
+    /**
+     * 排序方式：asc或desc
+     */
+    private String sord;
+
+
+    private String filters;
+
+    private JQGridFilter jqGridFilter;
+
+    public void setRecords(int records) {
+        this.records = records;
+        this.total = (records + rows) / rows;
+    }
+
+    public void initJqGrid() {
+        this.jqGridFilter = JsonUtils.parseObject(this.getFilters(), JQGridFilter.class);
+        int firstRowIndex = (page - 1) * rows;
+        if (firstRowIndex < 0) {
+            firstRowIndex = 0;
+        }
+        this.pageFirst = firstRowIndex;
+    }
+
+    public JQGridFilter getJqGridFilter() {
+        return jqGridFilter;
+    }
 
 
     public int getPage() {
@@ -68,10 +104,6 @@ public class PageJQGrid {
 
     public int getRecords() {
         return records;
-    }
-
-    public void setRecords(int records) {
-        this.records = records;
     }
 
     public int getRows() {
@@ -112,6 +144,34 @@ public class PageJQGrid {
 
     public void setSidx(String sidx) {
         this.sidx = sidx;
+    }
+
+    public String getSord() {
+        return sord;
+    }
+
+    public void setSord(String sord) {
+        this.sord = sord;
+    }
+
+    public String getFilters() {
+        return filters;
+    }
+
+    public void setFilters(String filters) {
+        this.filters = filters;
+    }
+
+    public int getPageFirst() {
+        return pageFirst;
+    }
+
+    public void setPageFirst(int pageFirst) {
+        this.pageFirst = pageFirst;
+    }
+
+    public void setJqGridFilter(JQGridFilter jqGridFilter) {
+        this.jqGridFilter = jqGridFilter;
     }
 }
 

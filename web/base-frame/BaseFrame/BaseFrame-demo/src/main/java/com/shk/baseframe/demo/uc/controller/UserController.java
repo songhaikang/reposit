@@ -71,9 +71,9 @@ public class UserController extends SimpleFormController {
         UcUserInfo ucUserinfo = userService.login(username, password);
         if (ucUserinfo == null) {
             result = new JsonResult("用户名或者密码错误！", false);
-        } else if (ucUserinfo.getState().equals(UserConstants.USER_STATE_FORBIDDEN)) {
+        } else if (ucUserinfo.getStatus().equals(UserConstants.USER_STATE_FORBIDDEN)) {
             result = new JsonResult("用户被禁用！", false);
-        } else if (ucUserinfo.getState().equals(UserConstants.USER_STATE_NORMAL)) {
+        } else if (ucUserinfo.getStatus().equals(UserConstants.USER_STATE_NORMAL)) {
             String token = TokenCache.addToken(ucUserinfo.getUserId());
             result = new JsonResult(token, true);
         }

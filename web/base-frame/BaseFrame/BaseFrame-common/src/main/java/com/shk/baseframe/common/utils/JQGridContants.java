@@ -25,4 +25,49 @@ public class JQGridContants {
     public final static String EDIT_OPER_UPDATE = "edit";
 
 
+    /**
+     * 升序
+     */
+    public final static String ORDER_BY_ASC= "asc";
+
+    /**
+     * 降序
+     */
+    public final static String ORDER_BY_DESC= "desc";
+
+
+    /**
+     * 条件之间是and关系
+     */
+    public final static String FILTER_GROUPOPS_AND = "AND";
+
+    /**
+     * 条件之间是or关系
+     */
+    public final static String FILTER_GROUPOPS_OR = "OR";
+
+
+    /**
+     * 条件为等于
+     */
+    public final static String FILTER_OPER_EQ = "eq";
+
+    /**
+     * 条件为不等于
+     */
+    public final static String FILTER_OPER_NE = "ne";
+
+    /**
+     * 条件为包含
+     */
+    public final static String FILTER_OPER_CN = "cn";
+
+    /**
+     * 条件为不包含
+     */
+    public final static String FILTER_OPER_NC = "nc";
+
+
+
+
 }

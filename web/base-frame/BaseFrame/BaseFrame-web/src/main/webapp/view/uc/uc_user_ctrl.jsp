@@ -31,28 +31,30 @@
             <span class="menu-text"></span>
         </a>
 
-<jsp:include page="/view/home/home_navigation.jsp"/>
+        <jsp:include page="/view/home/home_navigation.jsp"/>
 
 
-<div class="row">
-    <div class="col-xs-12">
-        <table id="grid-table"></table>
+        <div class="row">
+            <div class="col-xs-12">
+                <table id="grid-table"></table>
 
-        <div id="grid-pager"></div>
+                <div id="grid-pager"></div>
 
-        <script type="text/javascript">
-            var $path_base = "/";//this will be used in gritter alerts containing images
-        </script>
+                <script type="text/javascript">
+                    var $path_base = "/";//this will be used in gritter alerts containing images
+                </script>
 
-        <!-- PAGE CONTENT ENDS -->
+                <!-- PAGE CONTENT ENDS -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+
     </div>
-    <!-- /.col -->
+    <!-- /.page-content -->
 </div>
-<!-- /.row -->
-
-
-</div><!-- /.page-content -->
-</div><!-- /.main-content -->
+<!-- /.main-content -->
 
 <jsp:include page="/view/home/home_settings.jsp"/>
 
@@ -109,44 +111,17 @@
 <!-- inline scripts related to this page -->
 
 <script type="text/javascript">
-var grid_data =
-        [
-            {id: "1", name: "Desktop Computer", note: "note", sex: "Yes", ship: "FedEx", sdate: "2007-12-03"}
-//            {id: "2", name: "Laptop", note: "Long text ", stock: "Yes", ship: "InTime", sdate: "2007-12-03"},
-//            {id: "3", name: "LCD Monitor", note: "note3", stock: "Yes", ship: "TNT", sdate: "2007-12-03"},
-//            {id: "4", name: "Speakers", note: "note", stock: "No", ship: "ARAMEX", sdate: "2007-12-03"},
-//            {id: "5", name: "Laser Printer", note: "note2", stock: "Yes", ship: "FedEx", sdate: "2007-12-03"},
-//            {id: "6", name: "Play Station", note: "note3", stock: "No", ship: "FedEx", sdate: "2007-12-03"},
-//            {id: "7", name: "Mobile Telephone", note: "note", stock: "Yes", ship: "ARAMEX", sdate: "2007-12-03"},
-//            {id: "8", name: "Server", note: "note2", stock: "Yes", ship: "TNT", sdate: "2007-12-03"},
-//            {id: "9", name: "Matrix Printer", note: "note3", stock: "No", ship: "FedEx", sdate: "2007-12-03"},
-//            {id: "10", name: "Desktop Computer", note: "note", stock: "Yes", ship: "FedEx", sdate: "2007-12-03"},
-//            {id: "11", name: "Laptop", note: "Long text ", stock: "Yes", ship: "InTime", sdate: "2007-12-03"},
-//            {id: "12", name: "LCD Monitor", note: "note3", stock: "Yes", ship: "TNT", sdate: "2007-12-03"},
-//            {id: "13", name: "Speakers", note: "note", stock: "No", ship: "ARAMEX", sdate: "2007-12-03"},
-//            {id: "14", name: "Laser Printer", note: "note2", stock: "Yes", ship: "FedEx", sdate: "2007-12-03"},
-//            {id: "15", name: "Play Station", note: "note3", stock: "No", ship: "FedEx", sdate: "2007-12-03"},
-//            {id: "16", name: "Mobile Telephone", note: "note", stock: "Yes", ship: "ARAMEX", sdate: "2007-12-03"},
-//            {id: "17", name: "Server", note: "note2", stock: "Yes", ship: "TNT", sdate: "2007-12-03"},
-//            {id: "18", name: "Matrix Printer", note: "note3", stock: "No", ship: "FedEx", sdate: "2007-12-03"},
-//            {id: "19", name: "Matrix Printer", note: "note3", stock: "No", ship: "FedEx", sdate: "2007-12-03"},
-//            {id: "20", name: "Desktop Computer", note: "note", stock: "Yes", ship: "FedEx", sdate: "2007-12-03"},
-//            {id: "21", name: "Laptop", note: "Long text ", stock: "Yes", ship: "InTime", sdate: "2007-12-03"},
-//            {id: "22", name: "LCD Monitor", note: "note3", stock: "Yes", ship: "TNT", sdate: "2007-12-03"},
-//            {id: "23", name: "Speakers", note: "note", stock: "No", ship: "ARAMEX", sdate: "2007-12-03"}
-        ];
-
 jQuery(function ($) {
     var grid_selector = "#grid-table";
     var pager_selector = "#grid-pager";
 
     jQuery(grid_selector).jqGrid({
         //direction: "rtl",
-        mtype:"POST",//请求的类型：(“POST” or “GET”)	默认GET
+        mtype: "POST",//请求的类型：(“POST” or “GET”)	默认GET
         datatype: "json",//表格可以被接受的数据类型：xml，xmlstring，json，local，function
-        jsonReader : {root:"dataRows",id: "userId"},//root:设置记录集的属性名称，id:设置主键的属性名称
-        editurl:"<%=path%>/admin/uc/editUserInfo.do",//定义对form编辑时的url（增删改的时候使用）
-        url:"<%=path%>/admin/uc/getUserList.do",
+        jsonReader: {root: "dataRows", id: "userId"},//root:设置记录集的属性名称，id:设置主键的属性名称
+        editurl: "<%=path%>/admin/uc/editUserInfo.do",//定义对form编辑时的url（增删改的时候使用）
+        url: "<%=path%>/admin/uc/getUserList.do",
         rowNum: 10,
         rowList: [10, 20, 30],
         pager: pager_selector,
@@ -154,10 +129,10 @@ jQuery(function ($) {
         altRows: true,
         caption: "用户信息维护",
         viewrecords: true,
-        height: 350,
+        height: 392,
         colNames: ['操作', 'ID', '用户名', '密码', '邮箱', '手机号', '生日', '性别', '用户状态', '注册日期'],
         colModel: [
-            {name: 'myac', index: '', width: 80, fixed: true, sortable: false, resize: false,
+            {name: 'myac', index: 'myac', width: 80, fixed: true, sortable: false, resize: false, search: false,
                 formatter: 'actions',
                 formatoptions: {
                     keys: true,
@@ -167,13 +142,13 @@ jQuery(function ($) {
             },
             {name: 'userId', index: 'userId', hidden: true},
             {name: 'username', index: 'username', width: 100, editable: true, editoptions: {size: "20", maxlength: "30"}},
-            {name: 'password', index: 'password', width: 100, editable: true, editoptions: {size: "20", maxlength: "30"}},
+            {name: 'password', index: 'password', width: 100, editable: true, sortable: false, search: false, editoptions: {size: "20", maxlength: "30"}},
             {name: 'email', index: 'email', width: 100, editable: true, editoptions: {size: "20", maxlength: "30"}},
-            {name: 'mobilePhone', index: 'mobilePhone', width: 100, editable: true, editoptions: {size: "20", maxlength: "30"}},
-            {name: 'brithday', index: 'brithday', width: 90, editable: true, sorttype: "date", unformat: pickDate},
-            {name: 'sex', index: 'sex', width: 70, editable: true, edittype: "checkbox", editoptions: {value: "男:女"}, unformat: aceSwitch},
-            {name: 'state', index: 'state', width: 90, editable: true, edittype: "select", editoptions: {value: "USER_STATE_NORMAL:正常;OFF:禁用;TN:冻结;AR:无效"}},
-            {name: 'createTime', index: 'createTime', width: 90, editable: false, sorttype: "date", unformat: pickDate}
+            {name: 'mobilePhone', index: 'mobile_phone', width: 100, editable: true, editoptions: {size: "20", maxlength: "30"}},
+            {name: 'brithday', index: 'brithday', width: 90, editable: true, search: false, type: "date", sorttype: "date", unformat: EditBirthday, formatter: formartBirthday},
+            {name: 'sex', index: 'sex', width: 70, editable: true, edittype: "checkbox", search: false, formatter: formartSex, editoptions: {value: "BOY:GIRL"}, unformat: aceSwitch},
+            {name: 'status', index: 'status', width: 90, editable: true, edittype: "select", search: false, formatter: formartStatus, editoptions: {value: "STATUS_NORMOR:正常;STATE_FORBIDDEN:禁用;STATE_FREEZE:冻结"}},
+            {name: 'createTime', index: 'create_time', width: 110, editable: false, search: false, type: "date", sorttype: "date", formatter: formartCreateTime}
         ],
 
 
@@ -213,11 +188,64 @@ jQuery(function ($) {
     }
 
     //enable datepicker
-    function pickDate(cellvalue, options, cell) {
+    function EditBirthday(cellvalue, options, cell) {
         setTimeout(function () {
             $(cell).find('input[type=text]')
-                    .datepicker({format: 'yyyy-mm-dd', autoclose: true});
+                    .datepicker({format: 'yyyy-mm-dd', autoclose: false});
         }, 0);
+    }
+
+    function formartSex(cellValue, options, cell) {
+        var sex = "未知";
+        if (cellValue == "BOY" || cellValue == "男") {
+            sex = "男";
+        } else if (cellValue == "GIRL" || cellValue == "女") {
+            sex = "女";
+        }
+        return sex;
+    }
+
+    function formartStatus(cellValue, options, cell) {
+        var status = "未知";
+        if (cellValue == "STATUS_NORMOR" || cellValue == "正常") {
+            status = "正常";
+        } else if (cellValue == "STATE_FORBIDDEN" || cellValue == "禁用") {
+            status = "禁用";
+        } else if (cellValue == "STATE_FREEZE" || cellValue == "冻结") {
+            status = "冻结";
+        }
+//        alert(cellValue+"|||"+status);
+        return status;
+    }
+
+    function formartBirthday(cellValue, options, cell) {
+        return new Date(cellValue).format("yyyy-MM-dd");
+    }
+
+    function formartCreateTime(cellValue, options, cell) {
+        return new Date(cellValue).format("yyyy-MM-dd hh:mm:ss");
+    }
+
+
+    Date.prototype.format = function (format) {
+        var o = {
+            "M+": this.getMonth() + 1,
+            "d+": this.getDate(),
+            "h+": this.getHours(),
+            "m+": this.getMinutes(),
+            "s+": this.getSeconds(),
+            "q+": Math.floor((this.getMonth() + 3) / 3),
+            "S": this.getMilliseconds()
+        }
+        if (/(y+)/.test(format)) {
+            format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        }
+        for (var k in o) {
+            if (new RegExp("(" + k + ")").test(format)) {
+                format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+            }
+        }
+        return format;
     }
 
 
@@ -345,10 +373,8 @@ jQuery(function ($) {
     function beforeDeleteCallback(e) {
         var form = $(e[0]);
         if (form.data('styled')) return false;
-
         form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
         style_delete_form(form);
-
         form.data('styled', true);
     }
 

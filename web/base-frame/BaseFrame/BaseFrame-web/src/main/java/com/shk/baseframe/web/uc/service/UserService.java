@@ -6,7 +6,7 @@ import com.shk.baseframe.common.character.StringUtils;
 import com.shk.baseframe.common.dbmapper.uc.domain.UcUserInfo;
 import com.shk.baseframe.common.dbmapper.uc.domain.UcUserInfoExample;
 import com.shk.baseframe.common.dbmapper.uc.mapper.UcUserInfoMapper;
-import com.shk.baseframe.common.utils.JsonResult;
+import com.shk.baseframe.common.utils.*;
 import com.shk.baseframe.web.uc.domain.UserContants;
 import com.shk.baseframe.web.uc.domain.UserInfo;
 import com.shk.baseframe.web.uc.mapper.UserInfoMapper;
@@ -44,9 +44,11 @@ public class UserService {
         UcUserInfo ucUserinfo = login(username, password);
         if (ucUserinfo == null) {
             result = new JsonResult(JsonResultContants.LOGIN_USERNAME_PASSWORD_ERROR, JsonResultContants.LOGIN_USERNAME_PASSWORD_ERROR_MSG);
-        } else if (ucUserinfo.getState().equals(JsonResultContants.USER_STATE_FORBIDDEN)) {
+        } else if (ucUserinfo.getStatus().equals(UserContants.STATE_FORBIDDEN)) {
             result = new JsonResult(JsonResultContants.USER_STATE_FORBIDDEN, JsonResultContants.USER_STATE_FORBIDDEN_MSG);
-        } else if (ucUserinfo.getState().equals(JsonResultContants.USER_STATE_NORMAL)) {
+        } else if (ucUserinfo.getStatus().equals(UserContants.STATE_FREEZE)) {
+            result = new JsonResult(JsonResultContants.USER_STATE_FREEZE, JsonResultContants.USER_STATE_FREEZE_MSG);
+        } else {
             String token = tokenCache.addToken(ucUserinfo.getUserId());
             result = new JsonResult();
             result.setStatusCode(JsonResultContants.LOGIN_SUCCESS);
@@ -138,15 +140,108 @@ public class UserService {
     }
 
 
-    public List<UcUserInfo> getUserInfoList(UcUserInfo ucUserInfo) {
+    public JQGridPage getUserInfoList(JQGridPage pageJQGrid) {
+//        UcUserInfoExample example = getUcUserInfoExample(pageJQGrid.getFilters());
+        pageJQGrid.initJqGrid();
+        List<UcUserInfo> ucUserInfoList = ucUserInfoMapper.getUserListJQgrid(pageJQGrid);
+        for (UcUserInfo user : ucUserInfoList) {
+            user.setPassword(DesEncrypt.decrypt(user.getPassword(), UserContants.PASSWORD_DES));
+        }
+        pageJQGrid.setDataRows(ucUserInfoList);
+        Integer count = ucUserInfoMapper.getUserListCountJQgrid(pageJQGrid);
+        if (count != null) {
+            pageJQGrid.setRecords(count);
+        }
+        return pageJQGrid;
+    }
+
+    public UcUserInfoExample getUcUserInfoExample(JQGridPage pageJQGrid) {
         UcUserInfoExample example = new UcUserInfoExample();
-        List<UcUserInfo> ucUserInfoList = ucUserInfoMapper.selectByExample(example);
-        return ucUserInfoList;
+        if (StringUtils.isNotBlank(pageJQGrid.getSidx()) && StringUtils.isNotBlank(pageJQGrid.getSord())) {
+            if (pageJQGrid.getSord().equals(JQGridContants.ORDER_BY_ASC)) {
+                example.setOrderByClause(" ORDER BY " + pageJQGrid.getSidx() + " ASC");
+            } else {
+                example.setOrderByClause(" ORDER BY " + pageJQGrid.getSidx() + " DESC");
+            }
+        }
+
+        if (StringUtils.isNotBlank(pageJQGrid.getFilters())) {
+            JQGridFilter jqGridFilter = JsonUtils.parseObject(pageJQGrid.getFilters(), JQGridFilter.class);
+            for (JQGridRules rule : jqGridFilter.getRules()) {
+                if (jqGridFilter.getGroupOp().equalsIgnoreCase(JQGridContants.FILTER_GROUPOPS_AND)) {
+
+                    if (rule.getField().equals("username")) {
+                        if (rule.getOp().equals(JQGridContants.FILTER_OPER_EQ)) {
+                            example.createCriteria().andUsernameEqualTo(rule.getData());
+                        } else if (rule.getOp().equals(JQGridContants.FILTER_OPER_NE)) {
+                            example.createCriteria().andUsernameNotEqualTo(rule.getData());
+                        } else if (rule.getOp().equals(JQGridContants.FILTER_OPER_CN)) {
+                            example.createCriteria().andUsernameLike("%" + rule.getData() + "%");
+                        } else if (rule.getOp().equals(JQGridContants.FILTER_OPER_NC)) {
+                            example.createCriteria().andUsernameNotLike(rule.getData());
+                        }
+                    } else if (rule.getField().equals("email")) {
+                        if (rule.getOp().equals(JQGridContants.FILTER_OPER_EQ)) {
+                            example.createCriteria().andEmailEqualTo(rule.getData());
+                        } else if (rule.getOp().equals(JQGridContants.FILTER_OPER_NE)) {
+                            example.createCriteria().andEmailNotEqualTo(rule.getData());
+                        } else if (rule.getOp().equals(JQGridContants.FILTER_OPER_CN)) {
+                            example.createCriteria().andEmailLike("%" + rule.getData() + "%");
+                        } else if (rule.getOp().equals(JQGridContants.FILTER_OPER_NC)) {
+                            example.createCriteria().andEmailNotLike(rule.getData());
+                        }
+                    } else if (rule.getField().equals("mobilePhone")) {
+                        if (rule.getOp().equals(JQGridContants.FILTER_OPER_EQ)) {
+                            example.createCriteria().andMobilePhoneEqualTo(rule.getData());
+                        } else if (rule.getOp().equals(JQGridContants.FILTER_OPER_NE)) {
+                            example.createCriteria().andMobilePhoneNotEqualTo(rule.getData());
+                        } else if (rule.getOp().equals(JQGridContants.FILTER_OPER_CN)) {
+                            example.createCriteria().andMobilePhoneLike("%" + rule.getData() + "%");
+                        } else if (rule.getOp().equals(JQGridContants.FILTER_OPER_NC)) {
+                            example.createCriteria().andMobilePhoneNotLike(rule.getData());
+                        }
+                    }
+                } else if (jqGridFilter.getGroupOp().equalsIgnoreCase(JQGridContants.FILTER_GROUPOPS_OR)) {
+                    if (rule.getField().equals("username")) {
+                        if (rule.getOp().equals(JQGridContants.FILTER_OPER_EQ)) {
+                            example.or(example.createCriteria().andUsernameEqualTo(rule.getData()));
+                        } else if (rule.getOp().equals(JQGridContants.FILTER_OPER_NE)) {
+                            example.or(example.createCriteria().andUsernameNotEqualTo(rule.getData()));
+                        } else if (rule.getOp().equals(JQGridContants.FILTER_OPER_CN)) {
+                            example.or(example.createCriteria().andUsernameLike("%" + rule.getData() + "%"));
+                        } else if (rule.getOp().equals(JQGridContants.FILTER_OPER_NC)) {
+                            example.or(example.createCriteria().andUsernameNotLike(rule.getData()));
+                        }
+                    } else if (rule.getField().equals("email")) {
+                        if (rule.getOp().equals(JQGridContants.FILTER_OPER_EQ)) {
+                            example.or(example.createCriteria().andEmailEqualTo(rule.getData()));
+                        } else if (rule.getOp().equals(JQGridContants.FILTER_OPER_NE)) {
+                            example.or(example.createCriteria().andEmailNotEqualTo(rule.getData()));
+                        } else if (rule.getOp().equals(JQGridContants.FILTER_OPER_CN)) {
+                            example.or(example.createCriteria().andEmailLike("%" + rule.getData() + "%"));
+                        } else if (rule.getOp().equals(JQGridContants.FILTER_OPER_NC)) {
+                            example.or(example.createCriteria().andEmailNotLike(rule.getData()));
+                        }
+                    } else if (rule.getField().equals("mobilePhone")) {
+                        if (rule.getOp().equals(JQGridContants.FILTER_OPER_EQ)) {
+                            example.or(example.createCriteria().andMobilePhoneEqualTo(rule.getData()));
+                        } else if (rule.getOp().equals(JQGridContants.FILTER_OPER_NE)) {
+                            example.or(example.createCriteria().andMobilePhoneNotEqualTo(rule.getData()));
+                        } else if (rule.getOp().equals(JQGridContants.FILTER_OPER_CN)) {
+                            example.or(example.createCriteria().andMobilePhoneLike("%" + rule.getData() + "%"));
+                        } else if (rule.getOp().equals(JQGridContants.FILTER_OPER_NC)) {
+                            example.or(example.createCriteria().andMobilePhoneNotLike(rule.getData()));
+                        }
+                    }
+                }
+            }
+        }
+        return example;
     }
 
 
     public void update(UcUserInfo userInfo) {
-        if(StringUtils.isNotBlank(userInfo.getPassword())){
+        if (StringUtils.isNotBlank(userInfo.getPassword())) {
             userInfo.setPassword(DesEncrypt.encrypt(userInfo.getPassword(), UserContants.PASSWORD_DES));
         }
         ucUserInfoMapper.updateByPrimaryKeySelective(userInfo);
@@ -160,7 +255,6 @@ public class UserService {
 
     public void add(UcUserInfo userInfo) {
         userInfo.setPassword(DesEncrypt.encrypt(userInfo.getPassword(), UserContants.PASSWORD_DES));
-        userInfo.setState(JsonResultContants.USER_STATE_NORMAL);
         userInfo.setUserId(StringUtils.getUUID());
         userInfo.setCreateTime(new Date());
 

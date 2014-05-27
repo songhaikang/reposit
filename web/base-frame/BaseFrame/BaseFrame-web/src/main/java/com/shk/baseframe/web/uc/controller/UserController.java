@@ -2,12 +2,9 @@ package com.shk.baseframe.web.uc.controller;
 
 import com.shk.baseframe.common.cache.verifycode.AccreditCodeCache;
 import com.shk.baseframe.common.cache.verifycode.VerifyCodeCache;
-import com.shk.baseframe.common.character.DesEncrypt;
-import com.shk.baseframe.common.dbmapper.uc.domain.UcUserInfo;
 import com.shk.baseframe.common.utils.JQGridContants;
+import com.shk.baseframe.common.utils.JQGridPage;
 import com.shk.baseframe.common.utils.JsonResult;
-import com.shk.baseframe.common.utils.PageJQGrid;
-import com.shk.baseframe.web.uc.domain.UserContants;
 import com.shk.baseframe.web.uc.domain.UserInfo;
 import com.shk.baseframe.web.uc.service.UserService;
 import com.shk.baseframe.web.utils.JsonResultContants;
@@ -24,7 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 
 /**
@@ -104,14 +100,8 @@ public class UserController extends SimpleFormController {
 
     @ResponseBody
     @RequestMapping(value = "/admin/uc/getUserList")
-    public PageJQGrid getUserList(PageJQGrid pageJQGrid) {
-        UcUserInfo ucUserInfo = new UcUserInfo();
-        List<UcUserInfo> userList = userService.getUserInfoList(ucUserInfo);
-        for (UcUserInfo user : userList){
-            user.setPassword(DesEncrypt.decrypt(user.getPassword(), UserContants.PASSWORD_DES));
-        }
-        pageJQGrid.setDataRows(userList);
-        return pageJQGrid;
+    public JQGridPage getUserList(JQGridPage pageJQGrid) {
+        return userService.getUserInfoList(pageJQGrid);
     }
 
     @ResponseBody

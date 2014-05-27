@@ -30,8 +30,10 @@ public class JsonResultContants {
     public final static String LOGIN_SUCCESS_MSG = "登录成功！";
 
     public final static String USER_STATE_NORMAL = "USER_STATE_NORMAL";//正常状态
-    public final static String USER_STATE_FORBIDDEN = "USER_STATE_FORBIDDEN";//禁用状态
-    public final static String USER_STATE_FORBIDDEN_MSG = "用户被禁用！";//禁用状态
+    public final static String USER_STATE_FORBIDDEN = "USER_STATE_FORBIDDEN";
+    public final static String USER_STATE_FORBIDDEN_MSG = "用户被禁用！";
+    public final static String USER_STATE_FREEZE = "USER_STATE_FREEZE";
+    public final static String USER_STATE_FREEZE_MSG = "用户被冻结！";
 
     public final static String REG_USERNAME_EXSIT = "REG_USERNAME_EXSIT";
     public final static String REG_USERNAME_EXSIT_MSG = "用户名已经存在！";

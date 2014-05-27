@@ -72,7 +72,7 @@ public class UserService {
 
     
     public void add(UcUserInfo userInfo) {
-        userInfo.setState(UserConstants.USER_STATE_NORMAL);
+        userInfo.setStatus(UserConstants.USER_STATE_NORMAL);
         userInfo.setUserId(StringUtils.getUUID());
         ucUserInfoMapper.insert(userInfo);
     }
