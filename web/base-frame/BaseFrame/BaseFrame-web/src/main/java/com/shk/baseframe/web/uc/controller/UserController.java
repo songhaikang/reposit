@@ -9,25 +9,16 @@ import com.shk.baseframe.web.uc.domain.UserInfo;
 import com.shk.baseframe.web.uc.service.UserService;
 import com.shk.baseframe.web.utils.JsonResultContants;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.ServletRequestDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.SimpleFormController;
-
-import javax.servlet.http.HttpServletRequest;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 /**
  * 用户管理
  */
 @Controller//声明为控制器（使用Controller将该类标记为spring mvc解析的类，类似Struts中的Action）
-public class UserController extends SimpleFormController {
+public class UserController {
 
     @Autowired
     UserService userService;
@@ -37,15 +28,6 @@ public class UserController extends SimpleFormController {
 
     @Autowired
     AccreditCodeCache accreditCodeCache;
-
-
-    @InitBinder
-    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception {
-        DateFormat fmt = new SimpleDateFormat("yyyy-mm-dd");
-        CustomDateEditor dateEditor = new CustomDateEditor(fmt, true);
-        binder.registerCustomEditor(Date.class, dateEditor);
-        super.initBinder(request, binder);
-    }
 
 
     @ResponseBody
@@ -87,7 +69,7 @@ public class UserController extends SimpleFormController {
 
     @ResponseBody
     @RequestMapping(value = "/anonymous/uc/findPasswordUser")
-    public JsonResult findPasswordUser(String email, String codeKey, String codeContent){
+    public JsonResult findPasswordUser(String email, String codeKey, String codeContent) {
         JsonResult result = null;
         if (verifyCodeCache.checkVerifyCode(codeKey, codeContent)) {//验证码正确
             result = userService.findPasswordUser(email);
@@ -113,13 +95,12 @@ public class UserController extends SimpleFormController {
             userInfo.setUserId(userInfo.getId());
             userService.update(userInfo);
         } else if (userInfo.getOper().equals(JQGridContants.EDIT_OPER_DEL)) {
-            userService.delete(userInfo.getId());
+            String[] ids = userInfo.getId().split(",");
+            for (String id : ids) {
+                userService.delete(id);
+            }
         }
-
-
     }
-
-
 
 
 }

@@ -1,4 +1,4 @@
-package com.shk.baseframe.web.uc.service;
+package web.uc.service;
 
 import com.shk.baseframe.common.cache.token.TokenCache;
 import com.shk.baseframe.common.character.DesEncrypt;
@@ -37,7 +37,7 @@ public class UserService {
     @Autowired
     MailSendUtils mailSendUtils;
 
-    Logger logger = Logger.getLogger(UserService.class.getName());
+    Logger logger = Logger.getLogger(com.shk.baseframe.web.uc.service.UserService.class.getName());
 
     public JsonResult loginUser(String username, String password) {
         JsonResult result = null;
@@ -138,8 +138,7 @@ public class UserService {
     public JQGridPage getUserInfoList(JQGridPage pageJQGrid) {
         pageJQGrid.initJqGrid();
         List<UserInfo> userInfoList = userInfoMapper.getUserListJQgrid(pageJQGrid);
-        for (UserInfo user : userInfoList) {
-            user.initUserInfo();
+        for (UcUserInfo user : userInfoList) {
             user.setPassword(DesEncrypt.decrypt(user.getPassword(), UserContants.PASSWORD_DES));
         }
         pageJQGrid.setDataRows(userInfoList);

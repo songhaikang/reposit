@@ -1,5 +1,7 @@
 package com.shk.baseframe.common.utils;
 
+import com.shk.baseframe.common.character.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,7 +75,9 @@ public class JQGridPage {
     }
 
     public void initJqGrid() {
-        this.jqGridFilter = JsonUtils.parseObject(this.getFilters(), JQGridFilter.class);
+        if (StringUtils.isNotBlank(this.getFilters())) {
+            this.jqGridFilter = JsonUtils.parseObject(this.getFilters(), JQGridFilter.class);
+        }
         int firstRowIndex = (page - 1) * rows;
         if (firstRowIndex < 0) {
             firstRowIndex = 0;
