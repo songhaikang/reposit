@@ -53,11 +53,11 @@
     <!--mybatis实体注入-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="typeAliasesPackage" value="com.shk.baseframe.*.*.domain"/>
+        <property name="typeAliasesPackage" value="com.shk.baseframe.**.domain"/>
     </bean>
     <!--mybatis的xml配置文件（必须放在resources下面且路径与接口文件包名路径相同）及配置文件的接口注入-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.shk.baseframe.*.*.mapper"/>
+        <property name="basePackage" value="com.shk.baseframe.**.mapper"/>
     </bean>
     <!-- 据库相关的配置信息结束 -->
 
