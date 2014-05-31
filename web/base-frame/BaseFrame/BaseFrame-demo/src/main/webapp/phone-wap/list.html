@@ -13,14 +13,16 @@
     <meta name="apple-mobile-app-status-bar-style" content="white"/>
     <meta name="format-detection" content="telephone=no"/>
     <meta name="copyright" content="Copyright (c) 2007-2014 juooo"/>
-    <link rel="stylesheet" type="text/css" href="http://www.lanrenmb.com/wap/304/public/css/style-min.css?v1.2.32">
-    <link rel="stylesheet" type="text/css" href="http://www.lanrenmb.com/wap/304/public/css/alert.css?v1.6">
 
-    <script src="http://www.lanrenmb.com/wap/304/public/js/jquery-1.7.1.min.js"></script>
-    <script src="http://www.lanrenmb.com/wap/304/public/js/TouchSlide.1.1.js"></script>
-    <script src="http://www.lanrenmb.com/wap/304/public/js/jquery.lazyload.mini.js"></script>
-    <script src="http://www.lanrenmb.com/wap/304/public/js/base.js?v1.2"></script>
-    <script src="http://www.lanrenmb.com/wap/304/public/js/juooostatistics.js"></script>
+    <link rel="stylesheet" type="text/css" href="resources/css/style-min.css?v1.2.32">
+    <link rel="stylesheet" type="text/css" href="resources/css/alert.css?v1.6">
+
+    <script src="resources/js/jquery-1.7.1.min.js"></script>
+    <script src="resources/js/TouchSlide.1.1.js"></script>
+    <script src="resources/js/jquery.lazyload.mini.js"></script>
+    <script src="resources/js/base.js?v1.2"></script>
+    <script src="resources/js/juooostatistics.js"></script>
+    <script src="resources/js/jquery.tipswindow-2.2.js"></script>
 
     <script>
         $(window).load(function () {
@@ -28,26 +30,22 @@
                 $("#loadingBj").hide();
                 $(".ajaxLoad").hide();
             }
-        })
+        });
 
         $(function () {
             $(".cate_main img").lazyload({
-                placeholder: "http://www.lanrenmb.com/wap/304/public/image/bank.png",
+                placeholder: "resources/img/bank.png",
                 //container : ".tg_coun",
                 effect: "fadeIn"
-
             });
-
         });
-
     </script>
-    <script src="http://www.lanrenmb.com/wap/304/public/js/jquery.tipswindow-2.2.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#popupDialog").click(function () {
+            $("#popupDialog-city").click(function () {
                 $.tipsWindow({
-                    ___content: "id:popupDialog-screen",
+                    ___content: "id:popupDialog-screen-city",
                     //___width:"600",
                     //___height:"300",
                     ___drag: "___boxTitle",
@@ -67,7 +65,6 @@
                 })
             });
 
-
             $("#popupDialog-time").click(function () {
                 $.tipsWindow({
                     ___content: "id:popupDialog-screen-time",
@@ -78,11 +75,7 @@
                     ___showbg: true
                 })
             });
-
-
-        })
-
-
+        });
     </script>
 
     <script>
@@ -96,17 +89,11 @@
                     $(".list_tab").css({"position": "static"});
                 }
                 //console.log(scroH==navH);
-            })
+            });
         });
-
-
     </script>
-
 </head>
-
-
 <body ontouchmove="check_move()">
-
 <script>
     function check_move() {
         if ($(".juMenu").hasClass('juMenuPay')) {
@@ -114,17 +101,11 @@
         }
     }
 </script>
-
 <div id="loadingBj"></div>
-
 <div class="ajaxLoad">
-
     <span class="loading"><em class="loading-em"></em></span>
-
     <span class="loading-color">努力加载中...</span>
-
 </div>
-
 <div class="g-hd">
     <div class="l">
         <div class="br1">
@@ -133,152 +114,142 @@
     </div>
     <h1 class="sp logo">聚橙网触屏版</h1>
 
-    <div class="city"><a href="index/city"><i class="AppFonts">&#xf014a;</i>全国</a></div>
+    <div class="city"><a href="#"><i class="AppFonts">&#xf014a;</i>全国</a></div>
 </div>
 
 <div class="list_tab"><!--<div class="list_tab fixed"> -->
-    <!--a href="javascript:void(0)" class="tab1"  id="popupDialog">全国</a-->
+    <a href="javascript:void(0)" class="tab1" id="popupDialog-city">全国</a>
     <a href="javascript:void(0)" class="tab2" id="popupDialog-type">流行音乐</a>
     <a href="javascript:void(0)" class="tab3" id="popupDialog-time">全部时间</a>
 </div>
-
-
 <div class="warp pt17">
 
-
-<!--//////////////////////////////
-
-///列表开始
--->
 <div class="cate_main ">
+    <dl class="item cf" onclick="window.location.href='#'">
+        <h2>[深圳]费玉清2014深圳演唱会</h2>
+        <dt><a href="ticket.html">
+            <img src="resources/img/20140219095900692.jpg">
+        </a>
+        <div class="ico_zhu">
+            <div class="ui-iconfont ico_caidai">&#61472;</div>
+            <span class="txt">主<br>办</span>
+        </div>
+        </dt>
+        <dd><i class="ico ico_time">时间：</i><span class="time">2014.05.24</span></dd>
+        <dd><i class="ico ico_cost">场馆：</i>
+            <span class="time">华润深圳湾体育中心＂春茧＂体育馆</span></dd>
+        <dd><i class="ico ico_cost">价格：</i>
+            <span class="cost">140-1680元</span></dd>
+        <dd>
+            <span class="ico_tag">售票中</span>
+            <span class="ico_tag yu">选座</span>
+        </dd>
+    </dl>
 
-<dl class="item cf" onclick="window.location.href='#'">
-    <h2>[深圳]费玉清2014深圳演唱会</h2>
-    <dt><a href="ticket.html">
-        <img src="http://www.juooo.com/uploads/show/20140219095900692.jpg">
-    </a>
-    <div class="ico_zhu">
-        <div class="ui-iconfont ico_caidai">&#61472;</div>
-        <span class="txt">主<br>办</span>
-    </div>
-    </dt>
-    <dd><i class="ico ico_time">时间：</i><span class="time">2014.05.24</span></dd>
-    <dd><i class="ico ico_cost">场馆：</i>
-        <span class="time">华润深圳湾体育中心＂春茧＂体育馆</span></dd>
-    <dd><i class="ico ico_cost">价格：</i>
-        <span class="cost">140-1680元</span></dd>
-    <dd>
-        <span class="ico_tag">售票中</span>
-        <span class="ico_tag yu">选座</span>
-    </dd>
-</dl>
+    <dl class="item cf" onclick="window.location.href='#'">
+        <h2>[深圳]罗素红Russian Red《Fuertevent</h2>
+        <dt><a href="ticket.html">
+            <img src="resources/img/20140513155248785.jpg">
+        </a>
+        <div class="ico_zhu">
+            <div class="ui-iconfont ico_caidai">&#61472;</div>
+            <span class="txt">主<br>办</span>
+        </div>
+        </dt>
+        <dd><i class="ico ico_time">时间：</i><span class="time">2014.06.07</span></dd>
+        <dd><i class="ico ico_cost">场馆：</i>
+            <span class="time">聚橙网</span></dd>
+        <dd><i class="ico ico_cost">价格：</i>
+            <span class="cost">80-80元</span></dd>
+        <dd>
+            <span class="ico_tag">售票中</span>
+        </dd>
+    </dl>
 
-<dl class="item cf" onclick="window.location.href='#'">
-    <h2>[深圳]罗素红Russian Red《Fuertevent</h2>
-    <dt><a href="ticket.html">
-        <img src="http://www.juooo.com/uploads/show/20140513155248785.jpg">
-    </a>
-    <div class="ico_zhu">
-        <div class="ui-iconfont ico_caidai">&#61472;</div>
-        <span class="txt">主<br>办</span>
-    </div>
-    </dt>
-    <dd><i class="ico ico_time">时间：</i><span class="time">2014.06.07</span></dd>
-    <dd><i class="ico ico_cost">场馆：</i>
-        <span class="time">聚橙网</span></dd>
-    <dd><i class="ico ico_cost">价格：</i>
-        <span class="cost">80-80元</span></dd>
-    <dd>
-        <span class="ico_tag">售票中</span>
-    </dd>
-</dl>
+    <dl class="item cf" onclick="window.location.href='#'">
+        <h2>[深圳]CD碟-罗素红Russian Red《Agent </h2>
+        <dt><a href="ticket.html">
+            <img src="resources/img/20140513155605850.jpg">
+        </a>
+        <div class="ico_zhu">
+            <div class="ui-iconfont ico_caidai">&#61472;</div>
+            <span class="txt">主<br>办</span>
+        </div>
+        </dt>
+        <dd><i class="ico ico_time">时间：</i><span class="time">2014.06.07</span></dd>
+        <dd><i class="ico ico_cost">场馆：</i>
+            <span class="time">聚橙网</span></dd>
+        <dd><i class="ico ico_cost">价格：</i>
+            <span class="cost">80-80元</span></dd>
+        <dd>
+            <span class="ico_tag">售票中</span>
+        </dd>
+    </dl>
 
-<dl class="item cf" onclick="window.location.href='#'">
-    <h2>[深圳]CD碟-罗素红Russian Red《Agent </h2>
-    <dt><a href="ticket.html">
-        <img src="http://www.juooo.com/uploads/show/20140513155605850.jpg">
-    </a>
-    <div class="ico_zhu">
-        <div class="ui-iconfont ico_caidai">&#61472;</div>
-        <span class="txt">主<br>办</span>
-    </div>
-    </dt>
-    <dd><i class="ico ico_time">时间：</i><span class="time">2014.06.07</span></dd>
-    <dd><i class="ico ico_cost">场馆：</i>
-        <span class="time">聚橙网</span></dd>
-    <dd><i class="ico ico_cost">价格：</i>
-        <span class="cost">80-80元</span></dd>
-    <dd>
-        <span class="ico_tag">售票中</span>
-    </dd>
-</dl>
+    <dl class="item cf" onclick="window.location.href='#'">
+        <h2>[深圳]民谣小女巫—罗素红《库伯探员》2014中国巡演</h2>
+        <dt><a href="ticket.html">
+            <img src="resources/img/2014032714050816.jpg">
+        </a>
+        <div class="ico_zhu">
+            <div class="ui-iconfont ico_caidai">&#61472;</div>
+            <span class="txt">主<br>办</span>
+        </div>
+        </dt>
+        <dd><i class="ico ico_time">时间：</i><span class="time">2014.06.08</span></dd>
+        <dd><i class="ico ico_cost">场馆：</i>
+            <span class="time">深圳音乐厅</span></dd>
+        <dd><i class="ico ico_cost">价格：</i>
+            <span class="cost">100-380元</span></dd>
+        <dd>
+            <span class="ico_tag">售票中</span>
+        </dd>
+    </dl>
 
-<dl class="item cf" onclick="window.location.href='#'">
-    <h2>[深圳]民谣小女巫—罗素红《库伯探员》2014中国巡演</h2>
-    <dt><a href="ticket.html">
-        <img src="http://www.juooo.com/uploads/show/2014032714050816.jpg">
-    </a>
-    <div class="ico_zhu">
-        <div class="ui-iconfont ico_caidai">&#61472;</div>
-        <span class="txt">主<br>办</span>
-    </div>
-    </dt>
-    <dd><i class="ico ico_time">时间：</i><span class="time">2014.06.08</span></dd>
-    <dd><i class="ico ico_cost">场馆：</i>
-        <span class="time">深圳音乐厅</span></dd>
-    <dd><i class="ico ico_cost">价格：</i>
-        <span class="cost">100-380元</span></dd>
-    <dd>
-        <span class="ico_tag">售票中</span>
-    </dd>
-</dl>
+    <dl class="item cf" onclick="window.location.href='#'">
+        <h2>[上海]罗素红Russian Red《Fuertevent</h2>
+        <dt><a href="ticket.html">
+            <img src="resources/img/2014032714050816.jpg">
+        </a>
+        <div class="ico_zhu">
+            <div class="ui-iconfont ico_caidai">&#61472;</div>
+            <span class="txt">主<br>办</span>
+        </div>
+        </dt>
+        <dd><i class="ico ico_time">时间：</i><span class="time">2014.06.09</span></dd>
+        <dd><i class="ico ico_cost">场馆：</i>
+            <span class="time">聚橙网</span></dd>
+        <dd><i class="ico ico_cost">价格：</i>
+            <span class="cost">80-80元</span></dd>
+        <dd>
+            <span class="ico_tag">售票中</span>
+        </dd>
+    </dl>
 
-<dl class="item cf" onclick="window.location.href='#'">
-    <h2>[上海]罗素红Russian Red《Fuertevent</h2>
-    <dt><a href="ticket.html">
-        <img src="http://www.juooo.com/uploads/show/20140513155222883.jpg">
-    </a>
-    <div class="ico_zhu">
-        <div class="ui-iconfont ico_caidai">&#61472;</div>
-        <span class="txt">主<br>办</span>
-    </div>
-    </dt>
-    <dd><i class="ico ico_time">时间：</i><span class="time">2014.06.09</span></dd>
-    <dd><i class="ico ico_cost">场馆：</i>
-        <span class="time">聚橙网</span></dd>
-    <dd><i class="ico ico_cost">价格：</i>
-        <span class="cost">80-80元</span></dd>
-    <dd>
-        <span class="ico_tag">售票中</span>
-    </dd>
-</dl>
-
-<dl class="item cf" onclick="window.location.href='#'">
-    <h2>[上海]CD碟-罗素红Russian Red《Agent </h2>
-    <dt><a href="ticket.html">
-        <img src="http://www.juooo.com/uploads/show/20140513155311299.jpg">
-    </a>
-    <div class="ico_zhu">
-        <div class="ui-iconfont ico_caidai">&#61472;</div>
-        <span class="txt">主<br>办</span>
-    </div>
-    </dt>
-    <dd><i class="ico ico_time">时间：</i><span class="time">2014.06.09</span></dd>
-    <dd><i class="ico ico_cost">场馆：</i>
-        <span class="time">聚橙网</span></dd>
-    <dd><i class="ico ico_cost">价格：</i>
-        <span class="cost">80-80元</span></dd>
-    <dd>
-        <span class="ico_tag">售票中</span>
-    </dd>
-</dl>
-
-
+    <dl class="item cf" onclick="window.location.href='#'">
+        <h2>[上海]CD碟-罗素红Russian Red《Agent </h2>
+        <dt><a href="ticket.html">
+            <img src="resources/img/2014032714050816.jpg">
+        </a>
+        <div class="ico_zhu">
+            <div class="ui-iconfont ico_caidai">&#61472;</div>
+            <span class="txt">主<br>办</span>
+        </div>
+        </dt>
+        <dd><i class="ico ico_time">时间：</i><span class="time">2014.06.09</span></dd>
+        <dd><i class="ico ico_cost">场馆：</i>
+            <span class="time">聚橙网</span></dd>
+        <dd><i class="ico ico_cost">价格：</i>
+            <span class="cost">80-80元</span></dd>
+        <dd>
+            <span class="ico_tag">售票中</span>
+        </dd>
+    </dl>
 </div>
 
 <div class="loadMore" data_id="1"><!--i></i-->点击加载更多</div>
 
-<div data-role="popup" id="popupDialog-screen" style="display:none;">
+<div data-role="popup" id="popupDialog-screen-city" style="display:none;">
     <div class="pop-list" id="pop_list_city">
         <div class="title">
             <h2>选择分类</h2>
@@ -363,14 +334,15 @@
     <a href="User/login" class="myjuo"><i class="sp"></i>我的聚橙</a>
     <a href="Index/follow" class="atte"><i class="sp"></i>关注聚橙</a>
 </div>
-<div class="tel"><a href="tel_3A4001858666"><i class="fontIcon fa-phone"></i>联系客服:400-185-8666</a></div>
+<div class="tel"><a href="tel_3A4001858666"><i class="fontIcon fa-phone"></i>客服:400-185-8666</a></div>
 <div class="juMenu">
     <div class="t">
         <div class="ju_logo" onclick="check_footer(this)"></div>
     </div>
     <div class="juSearch">
-          <input class="text" onfocus="if(value=='请输入演出、艺人、场馆名称') {value=''}" onblur="if (value=='') {value='请输入演出、艺人、场馆名称'}" value="请输入演出、艺人、场馆名称" type="text">
-          <a href="javascript:;" class="btn"><i class="icon_txt s_btnIco"></i></a>
+        <input class="text" onfocus="if(value=='请输入演出、艺人、场馆名称') {value=''}"
+               onblur="if (value=='') {value='请输入演出、艺人、场馆名称'}" value="请输入演出、艺人、场馆名称" type="text">
+        <a href="javascript:;" class="btn"><i class="icon_txt s_btnIco"></i></a>
     </div>
     <div class="juMenu_list">
         <ul>
@@ -379,7 +351,8 @@
                 &#508;</i>我的订单</a>
         </ul>
         <ul>
-            <li class="nav03"><a href="index/index"><i class="ui-iconfont">&#336;</i><span class="txt">首页</span></a></li>
+            <li class="nav03"><a href="index/index"><i class="ui-iconfont">&#336;</i><span class="txt">首页</span></a>
+            </li>
             <li class="nav04"><a href="#"><i class="ui-iconfont">&#430;</i>返回顶部</a></li>
         </ul>
     </div>
@@ -401,160 +374,151 @@
     }
 </script>
 
-<!---
-
-//公共底部end
-
--->
-
-
 </div>
-
-
 <script>
 
-$(function () {
+    $(function () {
+        $(".loadMore").bind("click", function () {
+            check_more(this);
+        });
+    });
 
-    $(".loadMore").bind("click", function () {
+    /**
+     * 加载更多
+     * ?param  {[type]} obj [description]
+     * ?return {[type]}     [description]
+     */
+    var page = 2;
+    var cid = 35;
+    var city_id = 0;
+    var time = 0;
+    function check_more(obj) {
+        var flag = $(obj).attr('data_id');
+        //alert(flag)
+        if (flag == 1) {
+            $.ajax({
+                type: 'post',
+                url: "#",
+                data: "page=" + page + "&cid=" + cid + "&city_id=" + city_id + "&time=" + time,
+                dataType: 'html',
+                error: function () {
+                    alert("请稍后在试");
+                },
+                beforeSend: function () {
+                    $(obj).html("<i></i>点击加载更多");
+                    $(obj).unbind("click");
+                },
+                success: function (html) {
+                    html = "";
+                    for (var i = 0; i < 3; i++) {
+                        html = html + "<dl class=\"item cf\" onclick=\"window.location.href='#'\">"
+                                + "<h2>[上海]CD碟-罗素红Russian Red《Agent </h2>"
+                                + "<dt><a href=\"ticket.html\"><img src=\"resources/img/2014032714050816.jpg\"></a>"
+                                + "<div class=\"ico_zhu\"><div class=\"ui-iconfont ico_caidai\">&#61472;</div>"
+                                + "<span class=\"txt\">主<br>办</span></div></dt>"
+                                + "<dd><i class=\"ico ico_time\">时间：</i><span class=\"time\">2014.06.09</span></dd>"
+                                + "<dd><i class=\"ico ico_cost\">场馆：</i>"
+                                + "<span class=\"time\">聚橙网</span></dd>"
+                                + "<dd><i class=\"ico ico_cost\">价格：</i>"
+                                + "<span class=\"cost\">80-80元</span></dd><dd>"
+                                + "<span class=\"ico_tag\">售票中</span></dd></dl>"
+                    }
 
-        check_more(this);
+                    if (html != "") {
+                        $(".cate_main").append(html);
+                        $("img.c").lazyload({
+                            placeholder: "resources/img/bank.png",
+                            effect: "fadeIn"
+                        });
+                        page++;
+                    } else {
+                        $(obj).attr("data_id", 0);
+                        $(obj).html("已加载全部");
+                    }
+                },
+                complete: function () {
+                    $(".loadMore").bind("click", function () {
+                        check_more(this);
+                    });
+                    if ($(obj).attr("data_id") == 1) {
+                        $(obj).html("点击加载更多");
+                    }
+                }
+            });
+        }
+    }
 
-    })
 
-})
+    function open_city() {
+        $("#mask_city").css('display', '');
+        $("#pop_list_city").css({"-webkit-transform": "translateY(0)", "-webkit-transition": 'none', "transition": "none", "-webkit-transition": ' all 0.5s ease', "transition": 'all 0.5s ease'});
+    }
 
-/**
- * 加载更多
- * ?param  {[type]} obj [description]
- * ?return {[type]}     [description]
- */
-var page = 2;
-var cid = 35;
-var city_id = 0;
-var time = 0;
-function check_more(obj) {
-    var flag = $(obj).attr('data_id');
-    //alert(flag)
-    if (flag == 1) {
+
+    function check_close_city() {
+//        $("#city").slideUp("slow");
+        $("#mask_city").css('display', 'none');
+        $("#pop_list_city").css({"-webkit-transform": "translateY(-500px)", "-webkit-transition": 'none', "transition": "none", "-webkit-transition": ' all 0.5s ease', "transition": 'all 0.5s ease'});
+    }
+
+
+    function open_types() {
+//        $("#types").slideDown("slow");
+        $("#mask_types").css('display', '');
+        $("#pop_list_types").css({"-webkit-transform": "translateY(0)", "-webkit-transition": 'none', "transition": "none", "-webkit-transition": ' all 0.5s ease', "transition": 'all 0.5s ease'});
+    }
+
+    function check_close_types() {
+        $("#mask_types").css('display', 'none');
+        $("#pop_list_types").css({"-webkit-transform": "translateY(-500px)", "-webkit-transition": 'none', "transition": "none", "-webkit-transition": ' all 0.5s ease', "transition": 'all 0.5s ease'});
+    }
+
+
+    function open_times() {
+        $("#mask_times").css('display', '');
+        $("#pop_list_times").css({"-webkit-transform": "translateY(0)", "-webkit-transition": 'none', "transition": "none", "-webkit-transition": ' all 0.5s ease', "transition": 'all 0.5s ease'});
+    }
+
+
+    function check_close_times() {
+        $("#mask_times").css('display', 'none');
+        $("#pop_list_times").css({"-webkit-transform": "translateY(-500px)", "-webkit-transition": 'none', "transition": "none", "-webkit-transition": ' all 0.5s ease', "transition": 'all 0.5s ease'});
+    }
+
+
+    function setcity(id) {
         $.ajax({
             type: 'post',
-            url: "" + "/index.php/Ajax/listticket",
-            //url:'http://www.juooo.com/weixin/searchdetail/ajax?page=3&city=1&type=0&show_name=&star=',
-            data: "page=" + page + "&cid=" + cid + "&city_id=" + city_id + "&time=" + time,
-            //data:'page=3&city=1&type=0&show_name=&stat=',
-            dataType: 'html',
-            error: function () {
-                alert("请稍后在试");
-            },
-            beforeSend: function () {
-                $(obj).html("<i></i>点击加载更多");
-                $(obj).unbind("click");
-            },
-            success: function (html) {
-                //alert(html)
-                if (html != "") {
-                    $(".cate_main").append(html);
-                    $("img.c").lazyload({
-                        placeholder: "../public/image/bank.png",
-                        effect: "fadeIn"
-                    });
-                    page++;
-                } else {
-                    $(obj).attr("data_id", 0);
-                    $(obj).html("已加载全部");
-                }
-            },
-            complete: function () {
-                $(".loadMore").bind("click", function () {
-                    check_more(this);
-                });
-                if ($(obj).attr("data_id") == 1) {
-                    $(obj).html("点击加载更多");
+            url: "list.html",
+            data: 'cid=' + id,
+            dataType: 'json',
+            success: function (msg) {
+                if (msg) {
+                    window.location.reload();
                 }
             }
-        });
+        })
     }
-}
 
 
-function open_city() {
-    $("#mask_city").css('display', '');
-    $("#pop_list_city").css({"-webkit-transform": "translateY(0)", "-webkit-transition": 'none', "transition": "none", "-webkit-transition": ' all 0.5s ease', "transition": 'all 0.5s ease'});
-}
-
-
-function check_close_city() {
-    //alert(11)
-    //$("#city").slideUp("slow");
-    $("#mask_city").css('display', 'none');
-    $("#pop_list_city").css({"-webkit-transform": "translateY(-500px)", "-webkit-transition": 'none', "transition": "none", "-webkit-transition": ' all 0.5s ease', "transition": 'all 0.5s ease'});
-}
-
-
-function open_types() {
-    //$("#types").slideDown("slow");
-    $("#mask_types").css('display', '');
-    $("#pop_list_types").css({"-webkit-transform": "translateY(0)", "-webkit-transition": 'none', "transition": "none", "-webkit-transition": ' all 0.5s ease', "transition": 'all 0.5s ease'});
-}
-
-function check_close_types() {
-    //alert(11)
-    $("#mask_types").css('display', 'none');
-    $("#pop_list_types").css({"-webkit-transform": "translateY(-500px)", "-webkit-transition": 'none', "transition": "none", "-webkit-transition": ' all 0.5s ease', "transition": 'all 0.5s ease'});
-}
-
-
-function open_times() {
-    $("#mask_times").css('display', '');
-    $("#pop_list_times").css({"-webkit-transform": "translateY(0)", "-webkit-transition": 'none', "transition": "none", "-webkit-transition": ' all 0.5s ease', "transition": 'all 0.5s ease'});
-}
-
-
-function check_close_times() {
-    $("#mask_times").css('display', 'none');
-    $("#pop_list_times").css({"-webkit-transform": "translateY(-500px)", "-webkit-transition": 'none', "transition": "none", "-webkit-transition": ' all 0.5s ease', "transition": 'all 0.5s ease'});
-}
-
-
-function setcity(id) {
-    $.ajax({
-        type: 'post',
-        url: "" + "/index.php/Ajax/setcity",
-        data: 'cid=' + id,
-        dataType: 'json',
-        success: function (msg) {
-            if (msg) {
-                window.location.reload();
-            }
+    var time = 0;
+    var cid = 35;
+    function settypes(id) {
+        if (time) {
+            window.location.href = "list.html";
+        } else {
+            window.location.href = "list.html";
         }
-    })
-}
-
-
-var time = 0;
-var cid = 35;
-function settypes(id) {
-    if (time) {
-        window.location.href = "" + "/index.php/List?cid=" + id + "&time=" + time;
-    } else {
-        window.location.href = "" + "/index.php/List?cid=" + id;
     }
-}
 
-
-function settimes(id) {
-    if (cid) {
-        window.location.href = "" + "/index.php/List?time=" + id + "&cid=" + cid;
-    } else {
-        window.location.href = "" + "/index.php/List?time=" + id;
+    function settimes(id) {
+        if (cid) {
+            window.location.href = "list.html";
+        } else {
+            window.location.href = "list.html";
+        }
     }
-}
-
-
 </script>
-
-
 </body>
-
 </html>
 
