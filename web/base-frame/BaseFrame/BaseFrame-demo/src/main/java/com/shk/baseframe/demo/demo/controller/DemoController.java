@@ -71,7 +71,6 @@ public class DemoController {
             if (!targetFile.exists()) {
                 targetFile.mkdirs();
             }
-
             file.transferTo(targetFile);
         } catch (Exception e) {
             e.printStackTrace();
