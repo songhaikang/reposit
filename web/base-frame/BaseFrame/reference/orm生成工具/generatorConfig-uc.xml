@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<!-- 设置mysql驱动路径 -->
+	<classPathEntry location="./lib/mysql-connector-java-5.1.27-bin.jar" />
+	<!-- 此处指定生成针对MyBatis3的DAO -->
+	<context id="context1" targetRuntime="MyBatis3">
+		<!-- jdbc连接信息 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/tezizai" 
+			userId="shk"
+			password="shk" />
+		<!-- 生成entity对象 -->
+		<!-- <javaModelGenerator targetPackage="com.eduoinfo.finances.bank.entity" -->
+		<javaModelGenerator targetPackage="com.keqiaokeji.tezizai.common.dbmapper.uc.domain"
+			targetProject="./src" />
+		<!-- 在entity目录下生成用于查询的Example对象，在本目录生成Mapper.xml文件 -->
+		<!-- <sqlMapGenerator targetPackage="com.eduoinfo.finances.bank.dao" -->
+		<sqlMapGenerator targetPackage="com.keqiaokeji.tezizai.common.dbmapper.uc.mapper"
+			targetProject="./src" />
+		<!-- 生成DAO的类文件Mapper.java -->
+		<!-- <javaClientGenerator targetPackage="com.eduoinfo.finances.bank.dao" -->
+		<javaClientGenerator targetPackage="com.keqiaokeji.tezizai.common.dbmapper.uc.mapper"
+			targetProject="./src" type="XMLMAPPER" />
+		<!-- 想要生成的数据库表,自动化工具会根据该表的结构生成相应的vo对象 -->
+		<!--
+		<table schema="" tableName="data_info"></table>
+		<table schema="" tableName="user_info"></table>
+		<table schema="" tableName="plate_class"></table>
+		<table schema="" tableName="material_user"></table>
+		<table schema="" tableName="promissory_shops"></table>
+		<table schema="" tableName="credit"></table>
+		<table schema="" tableName="golden"></table>
+		<table schema="" tableName="vercode_log"></table>
+		<table schema="" tableName="activity_info"></table>
+		<table schema="" tableName="user_remark"></table>
+		<table schema="" tableName="user_message"></table>
+		<table schema="" tableName="manager_info"></table>
+		<table schema="" tableName="user_log"></table>
+		<table schema="" tableName="plate_info"></table>
+		<table schema="" tableName="material_info"></table>
+		<table schema="" tableName="material_master"></table>
+		<table schema="" tableName="financial_products"></table>
+		
+		-->
+		<table schema="" tableName="uc_corp_info"></table>
+		<table schema="" tableName="uc_user_info">
+			<!-- 可以不生成example -->
+			<!-- <property name="modelOnly" value="true"/> -->
+		</table>
+	</context>
+</generatorConfiguration>
