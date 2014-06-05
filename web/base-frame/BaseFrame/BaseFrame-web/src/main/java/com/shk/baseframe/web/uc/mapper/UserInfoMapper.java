@@ -1,6 +1,6 @@
 package com.shk.baseframe.web.uc.mapper;
 
-import com.shk.baseframe.common.utils.JQGridPage;
+import com.shk.baseframe.common.jqgrid.JQGridPage;
 import com.shk.baseframe.web.uc.domain.UserInfo;
 
 import java.util.List;

@@ -21,6 +21,12 @@
         <constructor-arg index="4" value="${redis.password}"/>
     </bean>
 
+    <bean id="jedisTools" class="com.shk.baseframe.common.cache.Jedis.JedisTools">
+        <property name="jedisPool" ref="jedisPool"/>
+    </bean>
+
+
+
     <!--集群服务-->
     <bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool">
         <constructor-arg index="0">
@@ -50,5 +56,8 @@
         </constructor-arg>
     </bean>
 
+    <bean id="jedisSharedTools" class="com.shk.baseframe.common.cache.Jedis.JedisSharedTools">
+        <property name="shardedJedisPool" ref="shardedJedisPool"/>
+    </bean>
 
 </beans>

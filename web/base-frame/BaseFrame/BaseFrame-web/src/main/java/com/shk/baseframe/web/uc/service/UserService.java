@@ -1,15 +1,17 @@
 package com.shk.baseframe.web.uc.service;
 
-import com.shk.baseframe.common.cache.token.TokenCache;
+import com.shk.baseframe.common.cache.CacheCtrl;
 import com.shk.baseframe.common.character.DesEncrypt;
 import com.shk.baseframe.common.character.StringUtils;
 import com.shk.baseframe.common.dbmapper.uc.domain.UcUserInfo;
 import com.shk.baseframe.common.dbmapper.uc.domain.UcUserInfoExample;
 import com.shk.baseframe.common.dbmapper.uc.mapper.UcUserInfoMapper;
-import com.shk.baseframe.common.utils.*;
+import com.shk.baseframe.common.jqgrid.JQGridPage;
+import com.shk.baseframe.common.utils.JsonResult;
 import com.shk.baseframe.web.uc.domain.UserContants;
 import com.shk.baseframe.web.uc.domain.UserInfo;
 import com.shk.baseframe.web.uc.mapper.UserInfoMapper;
+import com.shk.baseframe.web.utils.AppContents;
 import com.shk.baseframe.web.utils.JsonResultContants;
 import com.shk.baseframe.web.utils.MailSendUtils;
 import org.apache.log4j.Logger;
@@ -32,7 +34,7 @@ public class UserService {
     private UserInfoMapper userInfoMapper;
 
     @Autowired
-    TokenCache tokenCache;
+    CacheCtrl cacheCtrl;
 
     @Autowired
     MailSendUtils mailSendUtils;
@@ -49,7 +51,7 @@ public class UserService {
         } else if (ucUserinfo.getStatus().equals(UserContants.STATE_FREEZE)) {
             result = new JsonResult(JsonResultContants.USER_STATE_FREEZE, JsonResultContants.USER_STATE_FREEZE_MSG);
         } else {
-            String token = tokenCache.addToken(ucUserinfo.getUserId());
+            String token = cacheCtrl.getTokenCtrl().addToken(ucUserinfo);
             result = new JsonResult();
             result.setStatusCode(JsonResultContants.LOGIN_SUCCESS);
             result.setStatusMsg(JsonResultContants.LOGIN_SUCCESS_MSG);
@@ -168,6 +170,8 @@ public class UserService {
     public void add(UcUserInfo userInfo) {
         userInfo.setPassword(DesEncrypt.encrypt(userInfo.getPassword(), UserContants.PASSWORD_DES));
         userInfo.setUserId(StringUtils.getUUID());
+        userInfo.setStatus(UserContants.STATUS_NORMOR);
+        userInfo.setRecordStatus(AppContents.RECORD_STATUS_INSERT);
         userInfo.setCreateTime(new Date().getTime());
         userInfo.setLastModifyTime(new Date().getTime());
         ucUserInfoMapper.insert(userInfo);

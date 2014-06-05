@@ -1,9 +1,8 @@
 package com.shk.baseframe.web.uc.controller;
 
-import com.shk.baseframe.common.cache.verifycode.AccreditCodeCache;
-import com.shk.baseframe.common.cache.verifycode.VerifyCodeCache;
-import com.shk.baseframe.common.utils.JQGridContants;
-import com.shk.baseframe.common.utils.JQGridPage;
+import com.shk.baseframe.common.cache.CacheCtrl;
+import com.shk.baseframe.common.jqgrid.JQGridContants;
+import com.shk.baseframe.common.jqgrid.JQGridPage;
 import com.shk.baseframe.common.utils.JsonResult;
 import com.shk.baseframe.web.uc.domain.UserInfo;
 import com.shk.baseframe.web.uc.service.UserService;
@@ -24,17 +23,13 @@ public class UserController {
     UserService userService;
 
     @Autowired
-    VerifyCodeCache verifyCodeCache;
-
-    @Autowired
-    AccreditCodeCache accreditCodeCache;
-
+    CacheCtrl cacheCtrl;
 
     @ResponseBody
     @RequestMapping(value = "/anonymous/uc/loginUserWithVerifyCode")
     public JsonResult loginUserWithVerifyCode(String username, String password, String codeKey, String codeContent) {
         JsonResult result = null;
-        if (verifyCodeCache.checkVerifyCode(codeKey, codeContent)) {//验证码正确
+        if (cacheCtrl.getVerifyCodeCache().checkVerifyCode(codeKey, codeContent)) {//验证码正确
             result = userService.loginUser(username, password);
         } else {
             result = new JsonResult(JsonResultContants.VERIFY_CODE_FAIL, JsonResultContants.VERIFY_CODE_FAIL_MSG);
@@ -47,7 +42,7 @@ public class UserController {
     @RequestMapping(value = "/anonymous/uc/loginUserWithAccreditCode")
     public JsonResult loginUserWithAccreditCode(String username, String password, String accreditCode) {
         JsonResult result = null;
-        if (accreditCodeCache.checkAccreditCode(accreditCode)) {
+        if (cacheCtrl.getAccreditCodeCache().checkAccreditCode(accreditCode)) {
             result = userService.loginUser(username, password);
         } else {
             result = new JsonResult(JsonResultContants.ACCREDIt_CODE_FAIL, JsonResultContants.ACCREDIt_CODE_FAIL_MSG);
@@ -59,7 +54,7 @@ public class UserController {
     @RequestMapping(value = "/anonymous/uc/regUser")
     public JsonResult regUser(UserInfo userInfo, String codeKey, String codeContent) {
         JsonResult result = null;
-        if (verifyCodeCache.checkVerifyCode(codeKey, codeContent)) {//验证码正确
+        if (cacheCtrl.getVerifyCodeCache().checkVerifyCode(codeKey, codeContent)) {//验证码正确
             result = userService.regUser(userInfo);
         } else {
             result = new JsonResult(JsonResultContants.VERIFY_CODE_FAIL, JsonResultContants.VERIFY_CODE_FAIL_MSG);
@@ -71,7 +66,7 @@ public class UserController {
     @RequestMapping(value = "/anonymous/uc/findPasswordUser")
     public JsonResult findPasswordUser(String email, String codeKey, String codeContent) {
         JsonResult result = null;
-        if (verifyCodeCache.checkVerifyCode(codeKey, codeContent)) {//验证码正确
+        if (cacheCtrl.getVerifyCodeCache().checkVerifyCode(codeKey, codeContent)) {//验证码正确
             result = userService.findPasswordUser(email);
         } else {
             result = new JsonResult(JsonResultContants.VERIFY_CODE_FAIL, JsonResultContants.VERIFY_CODE_FAIL_MSG);

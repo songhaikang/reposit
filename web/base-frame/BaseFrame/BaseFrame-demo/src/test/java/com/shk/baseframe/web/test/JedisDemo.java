@@ -59,7 +59,8 @@ public class JedisDemo {
         config.setMaxIdle(5);
         config.setTestOnBorrow(false);
 
-        jedisPool = new JedisPool(config, "192.168.3.117", 6379);
+        jedisPool = new JedisPool(config, "112.124.54.136", 6379);
+//        jedisPool = new JedisPool(config, "192.168.1.39", 6379);
         System.out.println(jedisPool);
     }
 
@@ -75,7 +76,8 @@ public class JedisDemo {
 
         // slave链接
         List<JedisShardInfo> shards = new ArrayList<JedisShardInfo>();
-        shards.add(new JedisShardInfo("192.168.3.117", 6379, "master"));
+        shards.add(new JedisShardInfo("112.124.54.136", 6379, "master"));
+//        shards.add(new JedisShardInfo("192.168.1.39", 6379, "master"));
 
         // 构造池
         shardedJedisPool = new ShardedJedisPool(config, shards);
@@ -87,15 +89,15 @@ public class JedisDemo {
         // key检测
         testKey();
         // string检测
-        testString();
-        // list检测
-        testList();
-        // set检测
-        testSet();
-        // sortedSet检测
-        testSortedSet();
-        // hash检测
-        testHash();
+//        testString();
+//        // list检测
+//        testList();
+//        // set检测
+//        testSet();
+//        // sortedSet检测
+//        testSortedSet();
+//        // hash检测
+//        testHash();
         shardedJedisPool.returnResource(shardedJedis);
     }
 

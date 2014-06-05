@@ -1,26 +1,29 @@
 package com.shk.baseframe.common.cache.token;
 
+
+import com.shk.baseframe.common.dbmapper.uc.domain.UcUserInfo;
+
 /**
  * Created with IntelliJ IDEA.
- * User: shk
+ * User: keqiaokeji
  * Date: 14-5-14
  * Time: 下午10:16
  * To change this template use File | Settings | File Templates.
  */
 public class TokenInfo {
 
-    private String userId;
+    private UcUserInfo ucUserInfo;
 
     private String token;
 
     private Long lastUseTime;
 
-    public String getUserId() {
-        return userId;
+    public UcUserInfo getUcUserInfo() {
+        return ucUserInfo;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUcUserInfo(UcUserInfo ucUserInfo) {
+        this.ucUserInfo = ucUserInfo;
     }
 
     public String getToken() {

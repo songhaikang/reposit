@@ -1,6 +1,6 @@
 package com.shk.baseframe.svc.uc.service;
 
-import com.shk.baseframe.common.cache.token.TokenCache;
+import com.shk.baseframe.common.cache.CacheCtrl;
 import com.shk.baseframe.common.character.DesEncrypt;
 import com.shk.baseframe.common.character.StringUtils;
 import com.shk.baseframe.common.dbmapper.uc.domain.UcUserInfo;
@@ -10,7 +10,6 @@ import com.shk.baseframe.common.utils.JsonResult;
 import com.shk.baseframe.svc.uc.domain.UserContants;
 import com.shk.baseframe.svc.uc.domain.UserInfo;
 import com.shk.baseframe.svc.uc.mapper.UserInfoMapper;
-import com.shk.baseframe.svc.utils.AppContents;
 import com.shk.baseframe.svc.utils.JsonResultContants;
 import com.shk.baseframe.svc.utils.MailSendUtils;
 import org.apache.log4j.Logger;
@@ -32,7 +31,7 @@ public class UserService {
     private UserInfoMapper userMapper;
 
     @Autowired
-    TokenCache tokenCache;
+    CacheCtrl cacheCtrl;
 
     @Autowired
     MailSendUtils mailSendUtils;
@@ -47,7 +46,7 @@ public class UserService {
         } else if (ucUserinfo.getStatus().equals(JsonResultContants.USER_STATE_FORBIDDEN)) {
             result = new JsonResult(JsonResultContants.USER_STATE_FORBIDDEN, JsonResultContants.USER_STATE_FORBIDDEN_MSG);
         } else if (ucUserinfo.getStatus().equals(JsonResultContants.USER_STATE_NORMAL)) {
-            String token = tokenCache.addToken(ucUserinfo.getUserId());
+            String token = cacheCtrl.getTokenCtrl().addToken(ucUserinfo);
             result = new JsonResult();
             result.setStatusCode(JsonResultContants.LOGIN_SUCCESS);
             result.setStatusMsg(JsonResultContants.LOGIN_SUCCESS_MSG);

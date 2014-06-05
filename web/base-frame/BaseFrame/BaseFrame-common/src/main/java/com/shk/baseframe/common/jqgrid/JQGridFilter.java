@@ -1,4 +1,4 @@
-package com.shk.baseframe.common.utils;
+package com.shk.baseframe.common.jqgrid;
 
 import java.util.List;
 

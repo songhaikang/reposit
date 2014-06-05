@@ -134,7 +134,7 @@
                                                     <select id="state" name="state" class="select2"
                                                             data-placeholder="Click to Choose...">
                                                         <option value="">请选择</option>
-                                                        <option value="AL">宋海康-shk</option>
+                                                        <option value="AL">宋海康-keqiaokeji</option>
                                                         <option value="AK">陈永军-cyj</option>
                                                         <option value="AZ">兰祥建-lxj</option>
                                                         <option value="AR">Arkansas</option>
@@ -242,37 +242,7 @@
 </div>
 <!-- /.main-container -->
 
-<!-- basic scripts -->
-
-<!--[if !IE]> -->
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-<!-- <![endif]-->
-
-<!--[if IE]>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<![endif]-->
-
-<!--[if !IE]> -->
-
-<script type="text/javascript">
-    window.jQuery || document.write("<script src='<%=path%>/bootstrap/assets/js/jquery-2.0.3.min.js'>" + "<" + "/script>");
-</script>
-
-<!-- <![endif]-->
-
-<!--[if IE]>
-<script type="text/javascript">
-    window.jQuery || document.write("<script src='<%=path%>/bootstrap/assets/js/jquery-1.10.2.min.js'>" + "<" + "/script>");
-</script>
-<![endif]-->
-
-<script type="text/javascript">
-    if ("ontouchend" in document) document.write("<script src='<%=path%>/bootstrap/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
-</script>
-<script src="<%=path%>/bootstrap/assets/js/bootstrap.min.js"></script>
-<script src="<%=path%>/bootstrap/assets/js/typeahead-bs2.min.js"></script>
+<jsp:include page="/view/home/home_compatibility.jsp"/>
 
 <!-- page specific plugin scripts -->
 

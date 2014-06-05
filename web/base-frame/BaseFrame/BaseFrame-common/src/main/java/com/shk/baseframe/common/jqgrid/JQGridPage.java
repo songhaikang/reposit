@@ -1,6 +1,7 @@
-package com.shk.baseframe.common.utils;
+package com.shk.baseframe.common.jqgrid;
 
 import com.shk.baseframe.common.character.StringUtils;
+import com.shk.baseframe.common.utils.JsonUtils;
 
 import java.util.ArrayList;
 import java.util.List;

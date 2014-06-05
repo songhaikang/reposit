@@ -6,6 +6,7 @@ import com.shk.baseframe.common.character.StringUtils;
 import com.shk.baseframe.common.dbmapper.uc.domain.UcUserInfo;
 import com.shk.baseframe.common.dbmapper.uc.domain.UcUserInfoExample;
 import com.shk.baseframe.common.dbmapper.uc.mapper.UcUserInfoMapper;
+import com.shk.baseframe.common.jqgrid.JQGridPage;
 import com.shk.baseframe.common.utils.*;
 import com.shk.baseframe.web.uc.domain.UserContants;
 import com.shk.baseframe.web.uc.domain.UserInfo;
