@@ -40,18 +40,20 @@ public class ConfigFileUtils {
         File sourceFolder = new File(path);
         String[] files = sourceFolder.list();
         File temp = null;
-        for (String filePath : files) {
-            if (path.endsWith(File.separator)) {
-                temp = new File(path + filePath);
-            } else {
-                temp = new File(path + File.separator + filePath);
-            }
-            String tempPath = temp.getAbsolutePath();
-            if (temp.isFile()) {
-                filesMap.get(ConfigContext.FILE_LIST_KEY).add(tempPath);
-            } else {
-                filesMap.get(ConfigContext.FORDER_LIST_KEY).add(tempPath);
-                getFileList(tempPath);
+        if (files != null) {
+            for (String filePath : files) {
+                if (path.endsWith(File.separator)) {
+                    temp = new File(path + filePath);
+                } else {
+                    temp = new File(path + File.separator + filePath);
+                }
+                String tempPath = temp.getAbsolutePath();
+                if (temp.isFile()) {
+                    filesMap.get(ConfigContext.FILE_LIST_KEY).add(tempPath);
+                } else {
+                    filesMap.get(ConfigContext.FORDER_LIST_KEY).add(tempPath);
+                    getFileList(tempPath);
+                }
             }
         }
     }

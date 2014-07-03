@@ -22,6 +22,6 @@ public class ConfigContext {
 	public static String RENAME_BY_APP2 = "BaseFrame";
 	public static String RENAME_TO_APP2 = "BugManager";
 
-	public static String PATH_ROOT = "/Users/shk/Desktop/test1";
+	public static String PATH_ROOT = "/Users/shk/Desktop/temp1";
 
 }
