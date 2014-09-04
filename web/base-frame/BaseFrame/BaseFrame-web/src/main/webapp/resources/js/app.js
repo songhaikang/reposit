@@ -34,8 +34,11 @@ App.prototype = { //定义方法
 
     getUserInfoByCookie: function () {
         var userInfoJsonContent = document.cookie.match(new RegExp("(^| )" + this.userInfo + "=([^;]*)(;|$)"));
-        var userInfoJson = decodeURI(userInfoJsonContent[2]);
-        var userInfo = JSON.parse(userInfoJson);
+        var userInfo = null;
+        if (!this.isEmpty(userInfoJsonContent)) {
+            var userInfoJson = decodeURI(userInfoJsonContent[2]);
+            userInfo = JSON.parse(userInfoJson);
+        }
         return userInfo;
     },
 
@@ -107,12 +110,6 @@ App.prototype = { //定义方法
 }
 
 app = new App();
-
-
-
-
-
-
 
 
 Date.prototype.format = function (format) {

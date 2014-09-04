@@ -7,11 +7,6 @@
 <html lang="en">
 <head>
     <jsp:include page="/view/home/home_head.jsp"/>
-
-    <%--<link rel="stylesheet" href="<%=path%>/bootstrap/assets/css/jquery-ui-1.10.3.full.min.css"/>--%>
-    <%--<link rel="stylesheet" href="<%=path%>/bootstrap/assets/css/datepicker.css"/>--%>
-    <%--<link rel="stylesheet" href="<%=path%>/bootstrap/assets/css/ui.jqgrid.css"/>--%>
-
 </head>
 
 <body>

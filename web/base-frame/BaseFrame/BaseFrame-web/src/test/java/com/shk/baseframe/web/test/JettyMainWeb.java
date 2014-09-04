@@ -11,7 +11,7 @@ import org.mortbay.jetty.webapp.WebAppContext;
  */
 public class JettyMainWeb {
     public static void main(String[] args) throws Exception {
-        //配置访问路径如http://localhost:8082/BaseFrame-web/index.jsp的服务器
+        //配置访问路径如http://localhost:8081/BaseFrame-web/index.jsp的服务器
         Server jettyServer = new Server();
         SocketConnector conn = new SocketConnector();
         conn.setPort(8081);//启动的服务器端口号
